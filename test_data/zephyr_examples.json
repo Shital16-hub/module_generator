@@ -1,0 +1,1291 @@
+[
+  {
+    "test_id": "TC-PAY-001",
+    "title": "Verify Successful Credit Card Payment",
+    "objective": "To verify that a customer can successfully complete a purchase using a valid credit card",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Lead",
+    "created_date": "2024-09-20",
+    "last_updated": "2024-11-15",
+    "linked_stories": [
+      "PAY-001"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-001",
+      "REQ-PAY-002"
+    ],
+    "test_data_required": [
+      "Valid credit card",
+      "Test user account",
+      "Product in stock"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has items in cart (total > $10)",
+      "Payment gateway is operational",
+      "Test credit card credentials available"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to shopping cart",
+        "expected_result": "Cart page displays with selected items",
+        "test_data": "Cart contains at least 1 item"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Proceed to Checkout' button",
+        "expected_result": "Checkout page loads with shipping information form",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Enter shipping address: Name: 'John Doe', Address: '123 Main St', City: 'San Francisco', State: 'CA', ZIP: '94102'",
+        "expected_result": "Shipping address is accepted and saved",
+        "test_data": "Valid US shipping address"
+      },
+      {
+        "step_number": 4,
+        "action": "Click 'Continue to Payment' button",
+        "expected_result": "Payment page loads with payment method options",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Select 'Credit Card' as payment method",
+        "expected_result": "Credit card form appears with fields for card number, expiry, CVV",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Enter credit card details: Card Number: '4111111111111111', Expiry: '12/25', CVV: '123', Name: 'John Doe'",
+        "expected_result": "Card details are accepted, no validation errors displayed",
+        "test_data": "Test Visa card: 4111111111111111"
+      },
+      {
+        "step_number": 7,
+        "action": "Review order summary and click 'Place Order' button",
+        "expected_result": "Order is submitted, loading indicator appears",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Wait for payment processing",
+        "expected_result": "Payment processes successfully, order confirmation page displays",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify order confirmation details: Order number, items, total amount, shipping address, payment method",
+        "expected_result": "All order details are correct and match the placed order",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Check email inbox for order confirmation email",
+        "expected_result": "Order confirmation email received within 2 minutes with correct order details",
+        "test_data": "Email: testuser@example.com"
+      }
+    ],
+    "expected_results": [
+      "Payment processed successfully",
+      "Order confirmation page displayed",
+      "Order number generated",
+      "Confirmation email sent",
+      "Order status set to 'Confirmed' in database",
+      "Inventory decremented"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-15",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "8 minutes",
+        "environment": "Staging",
+        "notes": "All steps passed successfully"
+      },
+      {
+        "execution_date": "2024-10-30",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "9 minutes",
+        "environment": "Staging",
+        "notes": "No issues found"
+      }
+    ],
+    "defects_found": [],
+    "notes": "This is a critical path test case. Should be executed before every release.",
+    "labels": [
+      "smoke-test",
+      "critical-path",
+      "payment",
+      "checkout"
+    ]
+  },
+  {
+    "test_id": "TC-PAY-002",
+    "title": "Verify Payment Failure Handling with Declined Card",
+    "objective": "To verify that the system properly handles a declined credit card and displays appropriate error messages",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Negative Testing",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "created_by": "QA Lead",
+    "created_date": "2024-09-20",
+    "last_updated": "2024-11-15",
+    "linked_stories": [
+      "PAY-001"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-003"
+    ],
+    "test_data_required": [
+      "Declined test card",
+      "Test user account"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has items in cart",
+      "Test declined card credentials available"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to checkout and proceed to payment page",
+        "expected_result": "Payment page loads successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Select 'Credit Card' as payment method",
+        "expected_result": "Credit card form displays",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Enter declined test card details: Card Number: '4000000000000002', Expiry: '12/25', CVV: '123'",
+        "expected_result": "Card details accepted (format validation passes)",
+        "test_data": "Test declined card: 4000000000000002"
+      },
+      {
+        "step_number": 4,
+        "action": "Click 'Place Order' button",
+        "expected_result": "Order submission attempted, payment processing begins",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Observe payment processing",
+        "expected_result": "Payment gateway returns declined status",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Verify error message displayed to user",
+        "expected_result": "Clear error message: 'Your card was declined. Please try a different payment method or contact your bank.'",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Verify user remains on payment page",
+        "expected_result": "User stays on payment page, can retry with different card",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Verify order status in system",
+        "expected_result": "Order status is 'Pending' or 'Payment Failed', not 'Confirmed'",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify inventory is not decremented",
+        "expected_result": "Product stock levels remain unchanged",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify no confirmation email sent",
+        "expected_result": "No order confirmation email in inbox",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Payment declined properly",
+      "User-friendly error message displayed",
+      "User can retry payment",
+      "No order confirmation",
+      "Inventory unchanged",
+      "Transaction logged for fraud detection"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-15",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "7 minutes",
+        "environment": "Staging",
+        "notes": "Error handling working correctly"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with multiple declined card scenarios: insufficient funds, expired card, invalid CVV",
+    "labels": [
+      "negative-test",
+      "error-handling",
+      "payment"
+    ]
+  },
+  {
+    "test_id": "TC-AUTH-020",
+    "title": "Verify Multi-Factor Authentication Setup",
+    "objective": "To verify that users can successfully enable MFA using an authenticator app",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Authentication",
+    "test_type": "Functional",
+    "automation_status": "Manual",
+    "estimated_time": "12 minutes",
+    "created_by": "Security QA",
+    "created_date": "2024-10-05",
+    "last_updated": "2024-11-20",
+    "linked_stories": [
+      "AUTH-015"
+    ],
+    "linked_requirements": [
+      "REQ-SEC-001",
+      "REQ-SEC-002"
+    ],
+    "test_data_required": [
+      "Test user account",
+      "Authenticator app (Google Authenticator or Authy)"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User does not have MFA enabled",
+      "Authenticator app installed on mobile device"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Account Settings > Security",
+        "expected_result": "Security settings page loads",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Locate 'Two-Factor Authentication' section",
+        "expected_result": "MFA section displays with 'Enable' button",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Enable Two-Factor Authentication' button",
+        "expected_result": "MFA setup wizard opens",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Select 'Authenticator App' as MFA method",
+        "expected_result": "QR code is displayed along with manual entry key",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Open authenticator app and scan QR code",
+        "expected_result": "Account is added to authenticator app, 6-digit code starts generating",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Enter the 6-digit code from authenticator app into verification field",
+        "expected_result": "Code is accepted, verification successful message displayed",
+        "test_data": "Current TOTP code from app"
+      },
+      {
+        "step_number": 7,
+        "action": "Review and save backup codes displayed",
+        "expected_result": "10 unique backup codes are displayed with download/print options",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Click 'Download Backup Codes' and then 'Finish Setup'",
+        "expected_result": "Backup codes downloaded, MFA setup complete confirmation displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify MFA status on Security settings page",
+        "expected_result": "MFA shows as 'Enabled' with option to disable",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Log out and attempt to log back in",
+        "expected_result": "After entering password, prompted for 6-digit MFA code",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Enter current code from authenticator app",
+        "expected_result": "Login successful, user is authenticated",
+        "test_data": "Current TOTP code"
+      }
+    ],
+    "expected_results": [
+      "MFA enabled successfully",
+      "QR code scannable",
+      "Backup codes generated",
+      "MFA required on login",
+      "User can authenticate with app"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-20",
+        "executed_by": "Security QA",
+        "result": "Pass",
+        "duration": "11 minutes",
+        "environment": "Staging",
+        "notes": "Setup process smooth and user-friendly"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with multiple authenticator apps. Also test manual key entry if QR scan not available.",
+    "labels": [
+      "security",
+      "mfa",
+      "authentication",
+      "user-setup"
+    ]
+  },
+  {
+    "test_id": "TC-ORD-050",
+    "title": "Verify Order History Display",
+    "objective": "To verify that users can view their complete order history with accurate information",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Order Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-05",
+    "last_updated": "2024-11-10",
+    "linked_stories": [
+      "ORD-032"
+    ],
+    "linked_requirements": [
+      "REQ-ORD-010"
+    ],
+    "test_data_required": [
+      "User account with order history",
+      "At least 5 completed orders"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has at least 5 orders in different statuses",
+      "Order data is properly seeded in test database"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Account Dashboard",
+        "expected_result": "Dashboard page loads successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Click on 'Order History' or 'My Orders' link",
+        "expected_result": "Order history page loads displaying list of orders",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Verify orders are sorted by date (most recent first)",
+        "expected_result": "Orders appear in descending chronological order",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Verify each order displays: Order number, Date, Total amount, Status",
+        "expected_result": "All orders show required information in list view",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify status badges display correctly (e.g., 'Delivered' in green, 'Cancelled' in red)",
+        "expected_result": "Status indicators are color-coded and easily distinguishable",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Click on an order to view details",
+        "expected_result": "Order details page opens",
+        "test_data": "Select a completed order"
+      },
+      {
+        "step_number": 7,
+        "action": "Verify order details include: Items with images, Quantities, Prices, Shipping address, Payment method, Order timeline",
+        "expected_result": "All order information is displayed accurately",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "For a shipped order, verify tracking information is displayed",
+        "expected_result": "Tracking number and carrier displayed with 'Track Shipment' link",
+        "test_data": "Order in 'Shipped' status"
+      },
+      {
+        "step_number": 9,
+        "action": "Click 'Download Invoice' button",
+        "expected_result": "PDF invoice downloads with correct order information",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Return to order list and test pagination (if more than 10 orders)",
+        "expected_result": "Pagination works correctly, displays correct orders per page",
+        "test_data": "Account with 15+ orders"
+      }
+    ],
+    "expected_results": [
+      "Order history displays correctly",
+      "All orders are visible",
+      "Order details are accurate",
+      "Status updates in real-time",
+      "Tracking links functional",
+      "Invoice downloads correctly"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-10",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "9 minutes",
+        "environment": "Staging",
+        "notes": "All order information displaying correctly"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with various order statuses. Ensure real-time status updates are reflected.",
+    "labels": [
+      "order-management",
+      "user-interface",
+      "order-history"
+    ]
+  },
+  {
+    "test_id": "TC-PAY-030",
+    "title": "Verify Full Refund Processing",
+    "objective": "To verify that customer service representatives can successfully process full refunds",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Semi-Automated",
+    "estimated_time": "15 minutes",
+    "created_by": "QA Lead",
+    "created_date": "2024-10-10",
+    "last_updated": "2024-11-28",
+    "linked_stories": [
+      "PAY-005"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-010",
+      "REQ-CS-005"
+    ],
+    "test_data_required": [
+      "CS rep account",
+      "Completed order",
+      "Refund policy guidelines"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "CS rep is logged into admin portal",
+      "Order exists in 'Delivered' or 'Completed' status",
+      "Order is within refund window (30 days)",
+      "Payment was processed successfully"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Login to admin portal as Customer Service Rep",
+        "expected_result": "Admin dashboard loads successfully",
+        "test_data": "CS rep credentials"
+      },
+      {
+        "step_number": 2,
+        "action": "Navigate to Orders > Search Orders",
+        "expected_result": "Order search page displays",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Search for order using order number",
+        "expected_result": "Order is found and displays in search results",
+        "test_data": "Order number: ORD-123456"
+      },
+      {
+        "step_number": 4,
+        "action": "Click on order to view details",
+        "expected_result": "Order details page opens showing full order information",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify order is eligible for refund (status, date, payment method)",
+        "expected_result": "Order meets refund criteria, 'Process Refund' button is enabled",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Click 'Process Refund' button",
+        "expected_result": "Refund dialog box opens",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Select 'Full Refund' option and enter reason: 'Customer request - product not as expected'",
+        "expected_result": "Refund amount auto-populated with order total, reason field accepts text",
+        "test_data": "Reason: Customer request"
+      },
+      {
+        "step_number": 8,
+        "action": "Review refund summary: Amount, Method (original payment method), Processing time",
+        "expected_result": "Refund summary displays correctly with all details",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Click 'Confirm Refund' button",
+        "expected_result": "Confirmation dialog appears",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Confirm refund initiation",
+        "expected_result": "Refund is processed, success message displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Verify order status updated to 'Refunded'",
+        "expected_result": "Order status shows 'Refunded' with timestamp",
+        "test_data": null
+      },
+      {
+        "step_number": 12,
+        "action": "Verify refund transaction is logged in order timeline",
+        "expected_result": "Timeline shows refund entry with date, time, amount, and CS rep name",
+        "test_data": null
+      },
+      {
+        "step_number": 13,
+        "action": "Check customer's email for refund notification",
+        "expected_result": "Customer receives email confirming refund with amount and ETA",
+        "test_data": "Customer email"
+      },
+      {
+        "step_number": 14,
+        "action": "Verify inventory is restocked (if applicable)",
+        "expected_result": "Product quantities are incremented",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Refund processed successfully",
+      "Payment gateway refund initiated",
+      "Customer notified via email",
+      "Order status updated",
+      "Transaction logged",
+      "Inventory restored"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-28",
+        "executed_by": "QA Engineer 3",
+        "result": "Pass",
+        "duration": "14 minutes",
+        "environment": "Staging",
+        "notes": "Refund process smooth and intuitive"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Also test partial refunds, refunds for different payment methods (PayPal, Credit Card). Verify refund policy enforcement.",
+    "labels": [
+      "refunds",
+      "customer-service",
+      "payment",
+      "critical-path"
+    ]
+  },
+  {
+    "test_id": "TC-INV-025",
+    "title": "Verify Real-time Inventory Update on Order Placement",
+    "objective": "To verify that inventory levels decrease correctly when an order is placed",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Inventory",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-08-25",
+    "last_updated": "2024-11-12",
+    "linked_stories": [
+      "INV-018"
+    ],
+    "linked_requirements": [
+      "REQ-INV-001",
+      "REQ-INV-002"
+    ],
+    "test_data_required": [
+      "Product with known stock level",
+      "Test user account"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Product has sufficient stock (qty >= 5)",
+      "Initial inventory level recorded",
+      "No other orders being processed for same product"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Check initial inventory level for product via admin portal",
+        "expected_result": "Current stock level displayed (e.g., 50 units)",
+        "test_data": "Product SKU: PROD-001"
+      },
+      {
+        "step_number": 2,
+        "action": "As customer, add 3 units of product to cart",
+        "expected_result": "Product added to cart, cart shows 3 units",
+        "test_data": "Quantity: 3"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify inventory is reserved (soft lock) in admin portal",
+        "expected_result": "Available inventory shows 47 units (50 - 3 reserved)",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Proceed to checkout but do not complete order, wait 20 minutes",
+        "expected_result": "After timeout (15 min), reservation is released, inventory back to 50",
+        "test_data": "Reservation timeout: 15 minutes"
+      },
+      {
+        "step_number": 5,
+        "action": "Add 3 units to cart again and complete checkout immediately",
+        "expected_result": "Order placed successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Verify inventory is hard-locked (decremented) immediately after payment confirmation",
+        "expected_result": "Inventory shows 47 units (50 - 3 = 47)",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Verify inventory decrement is logged with timestamp and order number",
+        "expected_result": "Inventory audit log shows: -3 units, timestamp, order number, reason: 'Order placement'",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Attempt to add 48 units to cart (more than available)",
+        "expected_result": "Error message: 'Only 47 units available'",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify low stock alert triggers (if inventory < threshold)",
+        "expected_result": "If stock falls below threshold (e.g., 50), alert notification sent to inventory manager",
+        "test_data": "Low stock threshold: 50 units"
+      }
+    ],
+    "expected_results": [
+      "Inventory decrements correctly",
+      "No overselling occurs",
+      "Reservation mechanism works",
+      "Audit trail complete",
+      "Low stock alerts functional"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-12",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "10 minutes",
+        "environment": "Staging",
+        "notes": "Inventory management working as designed"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test concurrent orders for same product to verify race condition handling. Critical for preventing overselling.",
+    "labels": [
+      "inventory",
+      "critical",
+      "concurrent-testing",
+      "stock-management"
+    ]
+  },
+  {
+    "test_id": "TC-SRCH-020",
+    "title": "Verify Product Search with Filters",
+    "objective": "To verify that product search returns relevant results and filters work correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Search",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "12 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-15",
+    "last_updated": "2024-11-18",
+    "linked_stories": [
+      "SRCH-007"
+    ],
+    "linked_requirements": [
+      "REQ-SRCH-001",
+      "REQ-SRCH-002"
+    ],
+    "test_data_required": [
+      "Product catalog with varied categories and prices"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Product catalog is populated with test data",
+      "Search index is up-to-date",
+      "At least 50 products across multiple categories"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to homepage",
+        "expected_result": "Homepage loads with search bar visible",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Enter search term 'headphones' in search bar",
+        "expected_result": "Auto-complete suggestions appear showing products and categories",
+        "test_data": "Search term: headphones"
+      },
+      {
+        "step_number": 3,
+        "action": "Press Enter or click Search button",
+        "expected_result": "Search results page loads showing products matching 'headphones'",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Verify search results are relevant (contain 'headphones' in title or description)",
+        "expected_result": "All displayed products are headphones or related audio products",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify result count is displayed (e.g., '45 results found')",
+        "expected_result": "Result count shown at top of page",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Apply price filter: Min: $50, Max: $200",
+        "expected_result": "Results update to show only products within price range, result count updates",
+        "test_data": "Price range: $50-$200"
+      },
+      {
+        "step_number": 7,
+        "action": "Apply category filter: Select 'Wireless'",
+        "expected_result": "Results further filtered to show only wireless headphones in price range",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Apply rating filter: 4 stars and above",
+        "expected_result": "Only products with rating >= 4.0 are displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Change sort order to 'Price: Low to High'",
+        "expected_result": "Products re-sorted with lowest priced items first",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify all applied filters are displayed as chips/tags with remove option",
+        "expected_result": "Active filters shown as removable chips above results",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Click 'Clear All Filters' button",
+        "expected_result": "All filters removed, results return to initial search results for 'headphones'",
+        "test_data": null
+      },
+      {
+        "step_number": 12,
+        "action": "Test search with typo: 'hedphones' (missing 'a')",
+        "expected_result": "System suggests 'Did you mean: headphones?' and shows headphone results",
+        "test_data": "Typo: hedphones"
+      },
+      {
+        "step_number": 13,
+        "action": "Verify search performance: Note response time",
+        "expected_result": "Search results load in <500ms",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Search returns relevant results",
+      "Filters work correctly",
+      "Sort options functional",
+      "Typo tolerance works",
+      "Performance meets target",
+      "UI responsive and intuitive"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-18",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "11 minutes",
+        "environment": "Staging",
+        "notes": "Search functionality working well, average response time: 280ms"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Also test: empty search results, special characters, very long search terms, multiple filter combinations",
+    "labels": [
+      "search",
+      "filters",
+      "performance",
+      "user-experience"
+    ]
+  },
+  {
+    "test_id": "TC-NOTIF-030",
+    "title": "Verify Order Confirmation Email Notification",
+    "objective": "To verify that customers receive order confirmation emails with correct information",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Notifications",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-25",
+    "last_updated": "2024-11-27",
+    "linked_stories": [
+      "NOTIF-012"
+    ],
+    "linked_requirements": [
+      "REQ-NOTIF-001"
+    ],
+    "test_data_required": [
+      "Test user with valid email",
+      "Product for purchase"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Email service is operational",
+      "Test user has valid email address",
+      "User has not opted out of transactional emails"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Complete a test order as customer",
+        "expected_result": "Order placed successfully, order confirmation page displayed",
+        "test_data": "Order total: >$20"
+      },
+      {
+        "step_number": 2,
+        "action": "Note order number and timestamp",
+        "expected_result": "Order number and timestamp recorded",
+        "test_data": "Example: ORD-123456, 2024-11-27 14:30:00"
+      },
+      {
+        "step_number": 3,
+        "action": "Check email inbox within 2 minutes",
+        "expected_result": "Order confirmation email received",
+        "test_data": "Customer email address"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify email sender: 'noreply@platform.com' or 'orders@platform.com'",
+        "expected_result": "Email from recognized company sender",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify email subject line: 'Order Confirmation - #[Order Number]'",
+        "expected_result": "Subject contains order number",
+        "test_data": "Example: Order Confirmation - #ORD-123456"
+      },
+      {
+        "step_number": 6,
+        "action": "Verify email body contains: Order number, Order date, Items with quantities and prices, Shipping address, Payment method (last 4 digits only), Order total, Estimated delivery date",
+        "expected_result": "All order details present and accurate",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Verify email contains 'Track Your Order' link",
+        "expected_result": "Link present and properly formatted",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Click 'Track Your Order' link",
+        "expected_result": "Link opens to order details page with correct order loaded",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify email footer contains: Company contact information, Unsubscribe link (for marketing), Privacy policy link, Social media links",
+        "expected_result": "Footer complete with all required elements",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify email formatting is responsive (view on mobile)",
+        "expected_result": "Email displays correctly on mobile devices",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Verify no sensitive information exposed (full card number, CVV, password)",
+        "expected_result": "Only last 4 digits of payment method shown",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Email sent within 2 minutes",
+      "Email contains all required information",
+      "Links functional",
+      "Formatting professional",
+      "Security maintained",
+      "Mobile responsive"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-27",
+        "executed_by": "QA Engineer 3",
+        "result": "Pass",
+        "duration": "7 minutes",
+        "environment": "Staging",
+        "notes": "Email received in 45 seconds, all information correct"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test across different email clients: Gmail, Outlook, Apple Mail. Verify spam filtering.",
+    "labels": [
+      "notifications",
+      "email",
+      "transactional",
+      "customer-communication"
+    ]
+  },
+  {
+    "test_id": "TC-USR-040",
+    "title": "Verify User Profile Update",
+    "objective": "To verify that users can successfully update their profile information",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "User Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-07-20",
+    "last_updated": "2024-11-15",
+    "linked_stories": [
+      "USR-025"
+    ],
+    "linked_requirements": [
+      "REQ-USR-001"
+    ],
+    "test_data_required": [
+      "Test user account",
+      "Valid profile information"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has existing profile information"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Account Settings > Profile",
+        "expected_result": "Profile page loads with current information displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Edit Profile' button",
+        "expected_result": "Profile fields become editable",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Update First Name: Change from 'John' to 'Jonathan'",
+        "expected_result": "Field accepts new value",
+        "test_data": "New name: Jonathan"
+      },
+      {
+        "step_number": 4,
+        "action": "Update Phone Number: Change to '+1-555-9999'",
+        "expected_result": "Phone number field accepts format, validates correctly",
+        "test_data": "Phone: +1-555-9999"
+      },
+      {
+        "step_number": 5,
+        "action": "Attempt to enter invalid phone format: '123'",
+        "expected_result": "Validation error: 'Please enter a valid phone number'",
+        "test_data": "Invalid phone: 123"
+      },
+      {
+        "step_number": 6,
+        "action": "Correct phone number to valid format",
+        "expected_result": "Validation error clears",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Upload new profile picture (2MB JPG file)",
+        "expected_result": "Image uploads successfully, preview shown",
+        "test_data": "Image: profile.jpg (2MB)"
+      },
+      {
+        "step_number": 8,
+        "action": "Click 'Save Changes' button",
+        "expected_result": "Saving indicator appears, then success message displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify changes are reflected in profile view",
+        "expected_result": "Updated name, phone, and profile picture displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify changes persisted: Logout and login again",
+        "expected_result": "After re-login, profile still shows updated information",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Verify audit log records the changes",
+        "expected_result": "Profile changes logged with timestamp and fields modified",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Profile updates successfully",
+      "Validation works correctly",
+      "Changes persist after logout",
+      "Audit trail maintained",
+      "UI responsive"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-15",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "9 minutes",
+        "environment": "Staging",
+        "notes": "Profile update smooth, validation working well"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with various image formats and sizes. Test concurrent updates from multiple sessions.",
+    "labels": [
+      "user-profile",
+      "account-management",
+      "validation"
+    ]
+  },
+  {
+    "test_id": "TC-REP-015",
+    "title": "Verify Sales Dashboard Data Accuracy",
+    "objective": "To verify that the sales dashboard displays accurate metrics and data",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Reporting",
+    "test_type": "Functional",
+    "automation_status": "Semi-Automated",
+    "estimated_time": "20 minutes",
+    "created_by": "QA Analyst",
+    "created_date": "2024-11-01",
+    "last_updated": "2024-11-29",
+    "linked_stories": [
+      "REP-010"
+    ],
+    "linked_requirements": [
+      "REQ-REP-001",
+      "REQ-REP-002"
+    ],
+    "test_data_required": [
+      "Known order data in database",
+      "Sales data for comparison"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Manager role account logged in",
+      "Test data seeded in database with known values",
+      "Dashboard has access to complete data"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Reports > Sales Dashboard",
+        "expected_result": "Sales dashboard loads successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Select date range: 'Last 7 Days'",
+        "expected_result": "Dashboard updates to show data for past 7 days",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Manually calculate expected total revenue from database for date range",
+        "expected_result": "Known expected value calculated (e.g., $12,450.00)",
+        "test_data": "SQL query result: $12,450.00"
+      },
+      {
+        "step_number": 4,
+        "action": "Compare dashboard 'Total Revenue' metric with calculated value",
+        "expected_result": "Dashboard shows $12,450.00 (matches calculation)",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify 'Total Orders' count matches database",
+        "expected_result": "Count matches (e.g., 187 orders)",
+        "test_data": "Database count: 187"
+      },
+      {
+        "step_number": 6,
+        "action": "Calculate Average Order Value: Revenue / Orders = $12,450 / 187",
+        "expected_result": "Dashboard AOV = $66.58 (matches calculation)",
+        "test_data": "Expected AOV: $66.58"
+      },
+      {
+        "step_number": 7,
+        "action": "Verify 'Top Selling Product' matches database query",
+        "expected_result": "Top product matches (e.g., 'Wireless Headphones' - 45 units)",
+        "test_data": "Database top product: Wireless Headphones"
+      },
+      {
+        "step_number": 8,
+        "action": "Check revenue trend chart for date range",
+        "expected_result": "Chart shows daily revenue, data points match daily totals from database",
+        "test_data": "Spot check 3 random days"
+      },
+      {
+        "step_number": 9,
+        "action": "Apply filter: Category = 'Electronics'",
+        "expected_result": "All metrics update to show Electronics-only data",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify filtered revenue matches database query for Electronics",
+        "expected_result": "Filtered revenue matches calculated value",
+        "test_data": "Electronics revenue: $8,200.00"
+      },
+      {
+        "step_number": 11,
+        "action": "Export data as CSV",
+        "expected_result": "CSV file downloads with dashboard data",
+        "test_data": null
+      },
+      {
+        "step_number": 12,
+        "action": "Open CSV and spot-check 10 random records against database",
+        "expected_result": "All checked records match database exactly",
+        "test_data": "Random sample of 10 orders"
+      },
+      {
+        "step_number": 13,
+        "action": "Change date range to 'Custom: Nov 1-15, 2024'",
+        "expected_result": "Dashboard recalculates for custom range",
+        "test_data": "Date range: 2024-11-01 to 2024-11-15"
+      },
+      {
+        "step_number": 14,
+        "action": "Verify 'New Customers' count is accurate",
+        "expected_result": "Count matches database query for first-time customers in range",
+        "test_data": "Expected new customers: 42"
+      }
+    ],
+    "expected_results": [
+      "All metrics accurate",
+      "Calculations correct",
+      "Filters work properly",
+      "Charts display accurate data",
+      "Export matches dashboard",
+      "Date ranges work correctly"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-29",
+        "executed_by": "QA Analyst",
+        "result": "Pass",
+        "duration": "19 minutes",
+        "environment": "Staging",
+        "notes": "All metrics verified accurate. Dashboard performance good."
+      }
+    ],
+    "defects_found": [],
+    "notes": "Critical test case. Dashboard accuracy directly impacts business decisions. Test with large datasets.",
+    "labels": [
+      "reporting",
+      "dashboard",
+      "data-accuracy",
+      "critical",
+      "analytics"
+    ]
+  }
+]
