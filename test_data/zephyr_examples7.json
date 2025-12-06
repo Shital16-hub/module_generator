@@ -1,0 +1,140 @@
+[
+  {
+    "test_id": "TC-SRCH-020",
+    "title": "Verify Product Search with Filters",
+    "objective": "To verify that product search returns relevant results and filters work correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Search",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "12 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-15",
+    "last_updated": "2024-11-18",
+    "linked_stories": [
+      "SRCH-007"
+    ],
+    "linked_requirements": [
+      "REQ-SRCH-001",
+      "REQ-SRCH-002"
+    ],
+    "test_data_required": [
+      "Product catalog with varied categories and prices"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Product catalog is populated with test data",
+      "Search index is up-to-date",
+      "At least 50 products across multiple categories"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to homepage",
+        "expected_result": "Homepage loads with search bar visible",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Enter search term 'headphones' in search bar",
+        "expected_result": "Auto-complete suggestions appear showing products and categories",
+        "test_data": "Search term: headphones"
+      },
+      {
+        "step_number": 3,
+        "action": "Press Enter or click Search button",
+        "expected_result": "Search results page loads showing products matching 'headphones'",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Verify search results are relevant (contain 'headphones' in title or description)",
+        "expected_result": "All displayed products are headphones or related audio products",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify result count is displayed (e.g., '45 results found')",
+        "expected_result": "Result count shown at top of page",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Apply price filter: Min: $50, Max: $200",
+        "expected_result": "Results update to show only products within price range, result count updates",
+        "test_data": "Price range: $50-$200"
+      },
+      {
+        "step_number": 7,
+        "action": "Apply category filter: Select 'Wireless'",
+        "expected_result": "Results further filtered to show only wireless headphones in price range",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Apply rating filter: 4 stars and above",
+        "expected_result": "Only products with rating >= 4.0 are displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Change sort order to 'Price: Low to High'",
+        "expected_result": "Products re-sorted with lowest priced items first",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify all applied filters are displayed as chips/tags with remove option",
+        "expected_result": "Active filters shown as removable chips above results",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Click 'Clear All Filters' button",
+        "expected_result": "All filters removed, results return to initial search results for 'headphones'",
+        "test_data": null
+      },
+      {
+        "step_number": 12,
+        "action": "Test search with typo: 'hedphones' (missing 'a')",
+        "expected_result": "System suggests 'Did you mean: headphones?' and shows headphone results",
+        "test_data": "Typo: hedphones"
+      },
+      {
+        "step_number": 13,
+        "action": "Verify search performance: Note response time",
+        "expected_result": "Search results load in <500ms",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Search returns relevant results",
+      "Filters work correctly",
+      "Sort options functional",
+      "Typo tolerance works",
+      "Performance meets target",
+      "UI responsive and intuitive"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-18",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "11 minutes",
+        "environment": "Staging",
+        "notes": "Search functionality working well, average response time: 280ms"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Also test: empty search results, special characters, very long search terms, multiple filter combinations",
+    "labels": [
+      "search",
+      "filters",
+      "performance",
+      "user-experience"
+    ]
+  }
+]

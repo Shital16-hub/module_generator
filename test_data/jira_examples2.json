@@ -1,0 +1,51 @@
+[
+  {
+    "story_id": "AUTH-015",
+    "type": "User Story",
+    "priority": "Critical",
+    "status": "In Progress",
+    "module": "Authentication",
+    "title": "Multi-Factor Authentication (MFA)",
+    "description": "As a security-conscious user, I want to enable two-factor authentication on my account so that my account remains secure even if my password is compromised.",
+    "acceptance_criteria": [
+      "User can enable/disable MFA from account settings",
+      "System supports SMS and authenticator app-based MFA",
+      "User receives setup instructions with QR code for authenticator apps",
+      "MFA code expires after 30 seconds",
+      "System allows backup codes for account recovery",
+      "Failed MFA attempts are logged for security monitoring",
+      "User can choose to 'trust this device' for 30 days"
+    ],
+    "story_points": 13,
+    "epic": "Security Enhancement",
+    "sprint": "Sprint 24",
+    "assignee": "Sarah Johnson",
+    "reporter": "Security Team Lead",
+    "created_date": "2024-10-01",
+    "updated_date": "2024-11-25",
+    "resolution_date": null,
+    "components": ["Authentication", "Security", "User Management"],
+    "labels": ["security", "authentication", "high-priority"],
+    "linked_issues": {
+      "relates_to": ["AUTH-014", "AUTH-016"],
+      "depends_on": ["AUTH-010"],
+      "tested_by": ["TC-AUTH-020", "TC-AUTH-021"]
+    },
+    "comments": [
+      {
+        "author": "Developer",
+        "date": "2024-11-20",
+        "text": "Implemented SMS-based MFA. Working on authenticator app integration."
+      },
+      {
+        "author": "Security Auditor",
+        "date": "2024-11-22",
+        "text": "Ensure rate limiting on MFA attempts to prevent brute force attacks."
+      }
+    ],
+    "attachments": [
+      "mfa_architecture.pdf",
+      "security_requirements.docx"
+    ]
+  }
+]

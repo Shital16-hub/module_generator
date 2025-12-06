@@ -1,0 +1,34 @@
+[
+  {
+    "doc_id": "CONF-API-004",
+    "space": "Developer Portal",
+    "title": "REST API Documentation - v2.0",
+    "page_url": "https://confluence.company.com/display/DEV/REST+API+v2",
+    "parent_page": "API Documentation",
+    "created_by": "API Team Lead",
+    "created_date": "2024-09-10",
+    "last_updated": "2024-11-28",
+    "last_updated_by": "Backend Developer",
+    "module": "API",
+    "type": "api_documentation",
+    "labels": [
+      "api",
+      "rest",
+      "integration",
+      "developer"
+    ],
+    "content": "# REST API Documentation - v2.0\n\n## Base URL\n**Production:** https://api.platform.com/v2\n**Staging:** https://api-staging.platform.com/v2\n**Sandbox:** https://api-sandbox.platform.com/v2\n\n## Authentication\nAll API requests require authentication using Bearer tokens.\n\n### Getting an API Token\n**POST** /auth/token\n\nRequest:\n{\n  \"client_id\": \"your_client_id\",\n  \"client_secret\": \"your_client_secret\",\n  \"grant_type\": \"client_credentials\"\n}\n\nResponse:\n{\n  \"access_token\": \"eyJhbGci...\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600\n}\n\n### Using the Token\nInclude in request headers:\nAuthorization: Bearer {access_token}\n\n## Rate Limiting\n- **Standard**: 1000 requests/hour\n- **Premium**: 5000 requests/hour\n- **Enterprise**: 20000 requests/hour\n\nRate limit headers returned:\nX-RateLimit-Limit: 1000\nX-RateLimit-Remaining: 995\nX-RateLimit-Reset: 1700000000\n\n## Products API\n\n### List Products\n**GET** /products\n\nQuery Parameters:\n- `page` (integer): Page number (default: 1)\n- `limit` (integer): Items per page (default: 20, max: 100)\n- `category` (string): Filter by category\n- `search` (string): Search query\n- `min_price` (decimal): Minimum price\n- `max_price` (decimal): Maximum price\n- `in_stock` (boolean): Only show in-stock items\n\nExample Request:\nGET /products?category=electronics&min_price=50&limit=10\n\nResponse:\n{\n  \"data\": [\n    {\n      \"id\": \"PROD-001\",\n      \"name\": \"Wireless Headphones\",\n      \"description\": \"Premium noise-cancelling headphones\",\n      \"price\": 299.99,\n      \"currency\": \"USD\",\n      \"category\": \"Electronics\",\n      \"stock\": 150,\n      \"images\": [\"https://cdn.platform.com/products/prod-001-1.jpg\"],\n      \"rating\": 4.5,\n      \"reviews_count\": 234\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"limit\": 10,\n    \"total_items\": 1234,\n    \"total_pages\": 124\n  }\n}\n\n## Orders API\n\n### Create Order\n**POST** /orders\n\nRequest:\n{\n  \"items\": [\n    {\n      \"product_id\": \"PROD-001\",\n      \"quantity\": 2\n    }\n  ],\n  \"shipping_address\": {\n    \"name\": \"John Doe\",\n    \"address_line1\": \"123 Main St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94102\",\n    \"country\": \"US\",\n    \"phone\": \"+1-555-0100\"\n  },\n  \"payment_method\": \"credit_card\",\n  \"payment_token\": \"tok_xxxxxxxxxx\"\n}\n\n### Webhooks\nAvailable Events:\n- order.created\n- order.confirmed\n- order.shipped\n- order.delivered\n- payment.succeeded\n- payment.failed\n\n## Error Handling\nStandard HTTP status codes:\n- 200: Success\n- 400: Bad Request\n- 401: Unauthorized\n- 404: Not Found\n- 429: Rate Limit Exceeded\n- 500: Internal Server Error\n\n## Best Practices\n- Use pagination for large datasets\n- Implement retry logic with exponential backoff\n- Cache responses when appropriate\n- Use webhooks for event-driven updates",
+    "attachments": [
+      "api_collection.postman.json",
+      "swagger_spec.yaml"
+    ],
+    "linked_jira_issues": [
+      "API-001",
+      "API-002"
+    ],
+    "linked_test_cases": [
+      "TC-API-010",
+      "TC-API-011"
+    ]
+  }
+]

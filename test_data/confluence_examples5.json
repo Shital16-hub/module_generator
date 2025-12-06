@@ -1,0 +1,35 @@
+[
+  {
+    "doc_id": "CONF-INV-005",
+    "space": "Operations",
+    "title": "Inventory Management Best Practices",
+    "page_url": "https://confluence.company.com/display/OPS/Inventory+Management",
+    "parent_page": "Warehouse Operations",
+    "created_by": "Operations Manager",
+    "created_date": "2024-07-20",
+    "last_updated": "2024-11-05",
+    "last_updated_by": "Warehouse Manager",
+    "module": "Inventory",
+    "type": "operational_guide",
+    "labels": [
+      "inventory",
+      "warehouse",
+      "operations",
+      "best-practices"
+    ],
+    "content": "# Inventory Management Best Practices\n\n## Overview\nEffective inventory management is crucial for maintaining product availability, minimizing costs, and ensuring customer satisfaction.\n\n## Inventory Levels\n\n### Safety Stock\nMinimum stock level to prevent stockouts:\n- Formula: (Max Daily Usage \u00d7 Max Lead Time) - (Average Daily Usage \u00d7 Average Lead Time)\n- Review quarterly and adjust based on demand patterns\n- Set alerts when inventory falls below safety stock\n\n### Reorder Point\nTrigger point for placing new orders:\n- Formula: (Average Daily Usage \u00d7 Lead Time) + Safety Stock\n- Automated reorder triggers in the system\n- Manual overrides available for seasonal adjustments\n\n### Economic Order Quantity (EOQ)\nOptimal order quantity to minimize costs:\n- Formula: \u221a(2 \u00d7 Annual Demand \u00d7 Order Cost / Holding Cost)\n- Balances ordering costs with storage costs\n- Recalculated monthly\n\n## Inventory Tracking\n\n### Cycle Counting\nRegular counting of inventory subsets:\n- High-value items: Count weekly\n- Medium-value items: Count monthly\n- Low-value items: Count quarterly\n- ABC analysis determines item categorization\n\n### Physical Inventory Audits\nComplete warehouse counts:\n- Conducted semi-annually\n- All operations suspended during count\n- Variance reports generated and investigated\n- Adjustments made with manager approval\n\n## Stock Rotation\n\n### FIFO (First In, First Out)\nStandard method for perishable goods:\n- Oldest stock moved to front\n- New stock placed behind\n- Expiration dates tracked and monitored\n- Alerts for items nearing expiration\n\n### LIFO (Last In, First Out)\nUsed for non-perishable items when appropriate:\n- Newer stock used first\n- Reduces risk of obsolescence\n- Applied to technology products\n\n## Warehouse Layout\n\n### Zone Organization\n- Receiving Zone: Incoming shipments\n- Quality Control Zone: Inspection and testing\n- Storage Zone: Organized by product category\n- Picking Zone: High-turnover items\n- Packing Zone: Order fulfillment\n- Shipping Zone: Outgoing orders\n\n### Bin Location System\nAlphanumeric system for precise tracking:\n- Format: [Aisle]-[Bay]-[Level]-[Position]\n- Example: A-12-3-05\n- Barcode labels on all locations\n- Mobile scanners for real-time updates\n\n## Technology Integration\n\n### Barcode Scanning\n- All items tagged with barcodes\n- Scan at receiving, putaway, picking, packing, shipping\n- Real-time inventory updates\n- Error reduction and accuracy improvement\n\n### Warehouse Management System (WMS)\nFeatures:\n- Real-time inventory visibility\n- Automated reorder triggers\n- Pick path optimization\n- Labor management\n- Reporting and analytics\n\n## Key Performance Indicators\n\n### Inventory Accuracy\nTarget: >99%\n- Calculate: (Items Counted Correctly / Total Items Counted) \u00d7 100\n- Track daily and report monthly\n\n### Inventory Turnover\nTarget: 8-12 times per year\n- Calculate: Cost of Goods Sold / Average Inventory Value\n- Higher turnover indicates efficient inventory management\n\n### Order Picking Accuracy\nTarget: >99.8%\n- Calculate: (Orders Picked Correctly / Total Orders) \u00d7 100\n- Impacts customer satisfaction directly\n\n### Stockout Rate\nTarget: <2%\n- Calculate: (Stockout Incidents / Total Order Lines) \u00d7 100\n- Monitor by product category\n\n## Common Issues and Solutions\n\n### Overstocking\n**Symptoms:** High storage costs, cash tied up, risk of obsolescence\n**Solutions:** \n- Review demand forecasts\n- Implement just-in-time ordering\n- Negotiate return agreements with suppliers\n\n### Stockouts\n**Symptoms:** Lost sales, customer dissatisfaction\n**Solutions:**\n- Lower reorder points\n- Increase safety stock\n- Improve demand forecasting\n- Establish backup suppliers\n\n### Inventory Shrinkage\n**Symptoms:** Discrepancies between recorded and actual inventory\n**Solutions:**\n- Increase cycle counting frequency\n- Improve security measures\n- Investigate and address root causes\n- Train staff on proper procedures\n\n## Seasonal Inventory Management\n\n### Peak Season Preparation\n- Analyze historical data\n- Increase safety stock 4-6 weeks before peak\n- Hire temporary staff\n- Expand warehouse space if needed\n\n### Off-Season Strategy\n- Reduce inventory levels gradually\n- Clear slow-moving items with promotions\n- Focus on inventory accuracy\n- Perform deep cleaning and maintenance\n\n## Related Documentation\n- [Warehouse Safety Procedures](link)\n- [Quality Control Guidelines](link)\n- [Shipping and Receiving Protocols](link)",
+    "attachments": [
+      "warehouse_layout.pdf",
+      "inventory_tracking_template.xlsx"
+    ],
+    "linked_jira_issues": [
+      "INV-018",
+      "INV-015",
+      "INV-020"
+    ],
+    "linked_test_cases": [
+      "TC-INV-025",
+      "TC-INV-026"
+    ]
+  }
+]

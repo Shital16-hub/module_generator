@@ -1,0 +1,52 @@
+[
+  {
+    "story_id": "REP-010",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Reporting",
+    "title": "Sales Analytics Dashboard",
+    "description": "As a sales manager, I want to view real-time sales analytics so that I can make data-driven business decisions and track performance metrics.",
+    "acceptance_criteria": [
+      "Dashboard displays key metrics: total sales, orders, average order value",
+      "Data can be filtered by date range, product category, region",
+      "Charts show trends: daily sales, top products, customer segments",
+      "Dashboard updates in real-time (or near real-time)",
+      "User can export reports as PDF or Excel",
+      "Dashboard is responsive and works on tablets",
+      "System shows year-over-year comparison",
+      "Custom date ranges can be selected"
+    ],
+    "story_points": 8,
+    "epic": "Business Intelligence",
+    "sprint": "Sprint 24",
+    "assignee": "Jessica Wang",
+    "reporter": "VP of Sales",
+    "created_date": "2024-10-12",
+    "updated_date": "2024-11-29",
+    "resolution_date": null,
+    "components": ["Reporting", "Analytics", "Dashboard"],
+    "labels": ["analytics", "reporting", "business-intelligence"],
+    "linked_issues": {
+      "relates_to": ["REP-008", "REP-011"],
+      "depends_on": ["PAY-005"],
+      "tested_by": ["TC-REP-015", "TC-REP-016"]
+    },
+    "comments": [
+      {
+        "author": "Data Engineer",
+        "date": "2024-11-15",
+        "text": "Building data pipeline. Using materialized views for performance."
+      },
+      {
+        "author": "UX Designer",
+        "date": "2024-11-20",
+        "text": "Dashboard mockups ready. Focus on data visualization clarity."
+      }
+    ],
+    "attachments": [
+      "dashboard_mockup.png",
+      "metrics_specification.docx"
+    ]
+  }
+]

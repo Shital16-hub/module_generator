@@ -1,0 +1,128 @@
+[
+  {
+    "test_id": "TC-AUTH-020",
+    "title": "Verify Multi-Factor Authentication Setup",
+    "objective": "To verify that users can successfully enable MFA using an authenticator app",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Authentication",
+    "test_type": "Functional",
+    "automation_status": "Manual",
+    "estimated_time": "12 minutes",
+    "created_by": "Security QA",
+    "created_date": "2024-10-05",
+    "last_updated": "2024-11-20",
+    "linked_stories": [
+      "AUTH-015"
+    ],
+    "linked_requirements": [
+      "REQ-SEC-001",
+      "REQ-SEC-002"
+    ],
+    "test_data_required": [
+      "Test user account",
+      "Authenticator app (Google Authenticator or Authy)"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User does not have MFA enabled",
+      "Authenticator app installed on mobile device"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Account Settings > Security",
+        "expected_result": "Security settings page loads",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Locate 'Two-Factor Authentication' section",
+        "expected_result": "MFA section displays with 'Enable' button",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Enable Two-Factor Authentication' button",
+        "expected_result": "MFA setup wizard opens",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Select 'Authenticator App' as MFA method",
+        "expected_result": "QR code is displayed along with manual entry key",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Open authenticator app and scan QR code",
+        "expected_result": "Account is added to authenticator app, 6-digit code starts generating",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Enter the 6-digit code from authenticator app into verification field",
+        "expected_result": "Code is accepted, verification successful message displayed",
+        "test_data": "Current TOTP code from app"
+      },
+      {
+        "step_number": 7,
+        "action": "Review and save backup codes displayed",
+        "expected_result": "10 unique backup codes are displayed with download/print options",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Click 'Download Backup Codes' and then 'Finish Setup'",
+        "expected_result": "Backup codes downloaded, MFA setup complete confirmation displayed",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify MFA status on Security settings page",
+        "expected_result": "MFA shows as 'Enabled' with option to disable",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Log out and attempt to log back in",
+        "expected_result": "After entering password, prompted for 6-digit MFA code",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Enter current code from authenticator app",
+        "expected_result": "Login successful, user is authenticated",
+        "test_data": "Current TOTP code"
+      }
+    ],
+    "expected_results": [
+      "MFA enabled successfully",
+      "QR code scannable",
+      "Backup codes generated",
+      "MFA required on login",
+      "User can authenticate with app"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-20",
+        "executed_by": "Security QA",
+        "result": "Pass",
+        "duration": "11 minutes",
+        "environment": "Staging",
+        "notes": "Setup process smooth and user-friendly"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with multiple authenticator apps. Also test manual key entry if QR scan not available.",
+    "labels": [
+      "security",
+      "mfa",
+      "authentication",
+      "user-setup"
+    ]
+  }
+]

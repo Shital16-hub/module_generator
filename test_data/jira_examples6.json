@@ -1,0 +1,52 @@
+[
+  {
+    "story_id": "INV-018",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Inventory",
+    "title": "Real-time Inventory Updates",
+    "description": "As a warehouse manager, I want inventory levels to update in real-time so that I can prevent overselling and maintain accurate stock counts.",
+    "acceptance_criteria": [
+      "Inventory is decremented immediately upon order confirmation",
+      "System reserves inventory during checkout process (15-minute hold)",
+      "Low stock alerts trigger when inventory falls below threshold",
+      "Inventory updates are reflected across all sales channels",
+      "System handles concurrent purchases correctly (no overselling)",
+      "Inventory adjustments are logged with timestamp and user",
+      "Dashboard displays current stock levels by product and warehouse",
+      "System supports bulk inventory updates via CSV import"
+    ],
+    "story_points": 13,
+    "epic": "Warehouse Management",
+    "sprint": "Sprint 21",
+    "assignee": "Robert Martinez",
+    "reporter": "Operations Manager",
+    "created_date": "2024-07-15",
+    "updated_date": "2024-08-30",
+    "resolution_date": "2024-08-30",
+    "components": ["Inventory Management", "Warehouse", "Database"],
+    "labels": ["inventory", "critical", "operations"],
+    "linked_issues": {
+      "relates_to": ["INV-015", "INV-020"],
+      "depends_on": ["DB-005"],
+      "tested_by": ["TC-INV-025", "TC-INV-026", "TC-INV-027", "TC-INV-028"]
+    },
+    "comments": [
+      {
+        "author": "Database Admin",
+        "date": "2024-07-20",
+        "text": "Implemented database locking mechanism to prevent race conditions."
+      },
+      {
+        "author": "QA Engineer",
+        "date": "2024-08-25",
+        "text": "Load testing completed. System handles 1000 concurrent transactions without overselling."
+      }
+    ],
+    "attachments": [
+      "inventory_architecture.pdf",
+      "concurrency_testing_results.xlsx"
+    ]
+  }
+]

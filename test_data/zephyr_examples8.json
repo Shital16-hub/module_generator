@@ -1,0 +1,128 @@
+[
+  {
+    "test_id": "TC-NOTIF-030",
+    "title": "Verify Order Confirmation Email Notification",
+    "objective": "To verify that customers receive order confirmation emails with correct information",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Notifications",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-25",
+    "last_updated": "2024-11-27",
+    "linked_stories": [
+      "NOTIF-012"
+    ],
+    "linked_requirements": [
+      "REQ-NOTIF-001"
+    ],
+    "test_data_required": [
+      "Test user with valid email",
+      "Product for purchase"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Email service is operational",
+      "Test user has valid email address",
+      "User has not opted out of transactional emails"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Complete a test order as customer",
+        "expected_result": "Order placed successfully, order confirmation page displayed",
+        "test_data": "Order total: >$20"
+      },
+      {
+        "step_number": 2,
+        "action": "Note order number and timestamp",
+        "expected_result": "Order number and timestamp recorded",
+        "test_data": "Example: ORD-123456, 2024-11-27 14:30:00"
+      },
+      {
+        "step_number": 3,
+        "action": "Check email inbox within 2 minutes",
+        "expected_result": "Order confirmation email received",
+        "test_data": "Customer email address"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify email sender: 'noreply@platform.com' or 'orders@platform.com'",
+        "expected_result": "Email from recognized company sender",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify email subject line: 'Order Confirmation - #[Order Number]'",
+        "expected_result": "Subject contains order number",
+        "test_data": "Example: Order Confirmation - #ORD-123456"
+      },
+      {
+        "step_number": 6,
+        "action": "Verify email body contains: Order number, Order date, Items with quantities and prices, Shipping address, Payment method (last 4 digits only), Order total, Estimated delivery date",
+        "expected_result": "All order details present and accurate",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Verify email contains 'Track Your Order' link",
+        "expected_result": "Link present and properly formatted",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Click 'Track Your Order' link",
+        "expected_result": "Link opens to order details page with correct order loaded",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify email footer contains: Company contact information, Unsubscribe link (for marketing), Privacy policy link, Social media links",
+        "expected_result": "Footer complete with all required elements",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify email formatting is responsive (view on mobile)",
+        "expected_result": "Email displays correctly on mobile devices",
+        "test_data": null
+      },
+      {
+        "step_number": 11,
+        "action": "Verify no sensitive information exposed (full card number, CVV, password)",
+        "expected_result": "Only last 4 digits of payment method shown",
+        "test_data": null
+      }
+    ],
+    "expected_results": [
+      "Email sent within 2 minutes",
+      "Email contains all required information",
+      "Links functional",
+      "Formatting professional",
+      "Security maintained",
+      "Mobile responsive"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-27",
+        "executed_by": "QA Engineer 3",
+        "result": "Pass",
+        "duration": "7 minutes",
+        "environment": "Staging",
+        "notes": "Email received in 45 seconds, all information correct"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test across different email clients: Gmail, Outlook, Apple Mail. Verify spam filtering.",
+    "labels": [
+      "notifications",
+      "email",
+      "transactional",
+      "customer-communication"
+    ]
+  }
+]

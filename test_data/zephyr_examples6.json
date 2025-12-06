@@ -1,0 +1,116 @@
+[
+  {
+    "test_id": "TC-INV-025",
+    "title": "Verify Real-time Inventory Update on Order Placement",
+    "objective": "To verify that inventory levels decrease correctly when an order is placed",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Inventory",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-08-25",
+    "last_updated": "2024-11-12",
+    "linked_stories": [
+      "INV-018"
+    ],
+    "linked_requirements": [
+      "REQ-INV-001",
+      "REQ-INV-002"
+    ],
+    "test_data_required": [
+      "Product with known stock level",
+      "Test user account"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Product has sufficient stock (qty >= 5)",
+      "Initial inventory level recorded",
+      "No other orders being processed for same product"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Check initial inventory level for product via admin portal",
+        "expected_result": "Current stock level displayed (e.g., 50 units)",
+        "test_data": "Product SKU: PROD-001"
+      },
+      {
+        "step_number": 2,
+        "action": "As customer, add 3 units of product to cart",
+        "expected_result": "Product added to cart, cart shows 3 units",
+        "test_data": "Quantity: 3"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify inventory is reserved (soft lock) in admin portal",
+        "expected_result": "Available inventory shows 47 units (50 - 3 reserved)",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Proceed to checkout but do not complete order, wait 20 minutes",
+        "expected_result": "After timeout (15 min), reservation is released, inventory back to 50",
+        "test_data": "Reservation timeout: 15 minutes"
+      },
+      {
+        "step_number": 5,
+        "action": "Add 3 units to cart again and complete checkout immediately",
+        "expected_result": "Order placed successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Verify inventory is hard-locked (decremented) immediately after payment confirmation",
+        "expected_result": "Inventory shows 47 units (50 - 3 = 47)",
+        "test_data": null
+      },
+      {
+        "step_number": 7,
+        "action": "Verify inventory decrement is logged with timestamp and order number",
+        "expected_result": "Inventory audit log shows: -3 units, timestamp, order number, reason: 'Order placement'",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Attempt to add 48 units to cart (more than available)",
+        "expected_result": "Error message: 'Only 47 units available'",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify low stock alert triggers (if inventory < threshold)",
+        "expected_result": "If stock falls below threshold (e.g., 50), alert notification sent to inventory manager",
+        "test_data": "Low stock threshold: 50 units"
+      }
+    ],
+    "expected_results": [
+      "Inventory decrements correctly",
+      "No overselling occurs",
+      "Reservation mechanism works",
+      "Audit trail complete",
+      "Low stock alerts functional"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-12",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "10 minutes",
+        "environment": "Staging",
+        "notes": "Inventory management working as designed"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test concurrent orders for same product to verify race condition handling. Critical for preventing overselling.",
+    "labels": [
+      "inventory",
+      "critical",
+      "concurrent-testing",
+      "stock-management"
+    ]
+  }
+]

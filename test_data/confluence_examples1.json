@@ -1,0 +1,36 @@
+[
+  {
+    "doc_id": "CONF-PAY-001",
+    "space": "Product Documentation",
+    "title": "Payment Processing Module - Technical Overview",
+    "page_url": "https://confluence.company.com/display/PROD/Payment+Processing+Module",
+    "parent_page": "E-commerce Platform Documentation",
+    "created_by": "Technical Writer",
+    "created_date": "2024-09-01",
+    "last_updated": "2024-11-15",
+    "last_updated_by": "Solutions Architect",
+    "module": "Payment",
+    "type": "technical_documentation",
+    "labels": [
+      "payment",
+      "architecture",
+      "api",
+      "integration"
+    ],
+    "content": "# Payment Processing Module - Technical Overview\n\n## Introduction\nThe Payment Processing Module is responsible for handling all financial transactions within the e-commerce platform. It supports multiple payment methods including credit cards, debit cards, PayPal, and digital wallets.\n\n## Architecture\n\n### System Components\n1. **Payment Gateway Interface**: Abstraction layer for multiple payment providers\n2. **Transaction Manager**: Handles payment lifecycle and state management\n3. **Security Layer**: PCI DSS compliant encryption and tokenization\n4. **Fraud Detection**: Real-time fraud analysis using machine learning\n5. **Reconciliation Service**: Daily settlement and accounting integration\n\n### Payment Flow\n1. Customer initiates checkout\n2. Payment details collected (encrypted client-side)\n3. Tokenization performed (no raw card data stored)\n4. Payment gateway processes transaction\n5. Real-time response returned\n6. Transaction logged and inventory updated\n7. Confirmation sent to customer\n\n## Supported Payment Methods\n\n### Credit/Debit Cards\n- Visa, MasterCard, American Express, Discover\n- 3D Secure authentication for enhanced security\n- CVV verification required\n- Address Verification System (AVS) enabled\n\n### PayPal\n- Standard PayPal checkout flow\n- Express checkout for returning customers\n- Supports PayPal Credit\n- Automatic refund processing\n\n### Digital Wallets\n- Apple Pay\n- Google Pay\n- Samsung Pay\n\n## Security Considerations\n\n### PCI DSS Compliance\n- No storage of raw card numbers\n- Tokenization via payment gateway\n- End-to-end encryption\n- Annual security audits\n\n### Fraud Prevention\n- IP geolocation checks\n- Velocity checks (transaction frequency)\n- CVV and AVS matching\n- Machine learning-based risk scoring\n\n## API Reference\n\n### Process Payment Endpoint\n**POST** /api/v1/payments/process\n\nRequest:\n{\n  \"order_id\": \"ORD-12345\",\n  \"payment_method\": \"credit_card\",\n  \"amount\": 99.99,\n  \"currency\": \"USD\",\n  \"payment_token\": \"tok_xxxxxxxxxx\"\n}\n\nResponse:\n{\n  \"transaction_id\": \"TXN-67890\",\n  \"status\": \"success\",\n  \"authorization_code\": \"AUTH123456\"\n}\n\n### Refund Endpoint\n**POST** /api/v1/payments/refund\n\nRequest:\n{\n  \"transaction_id\": \"TXN-67890\",\n  \"amount\": 99.99,\n  \"reason\": \"customer_request\"\n}\n\n## Error Handling\n- Insufficient funds: Notify user, suggest alternative payment\n- Card declined: Suggest contacting bank or trying different card\n- Gateway timeout: Automatic retry with exponential backoff\n- Duplicate transaction: Idempotency checks prevent double charging\n\n## Monitoring and Logging\n- All transactions logged with full audit trail\n- Real-time alerts for failed transactions > 5%\n- Daily reconciliation reports\n- Integration with Splunk for log analysis\n\n## Related Documentation\n- [Payment Gateway Integration Guide](link)\n- [PCI Compliance Checklist](link)\n- [Fraud Detection Configuration](link)",
+    "attachments": [
+      "payment_architecture_diagram.png",
+      "api_postman_collection.json"
+    ],
+    "linked_jira_issues": [
+      "PAY-001",
+      "PAY-002",
+      "PAY-005"
+    ],
+    "linked_test_cases": [
+      "TC-PAY-001",
+      "TC-PAY-010",
+      "TC-PAY-030"
+    ]
+  }
+]

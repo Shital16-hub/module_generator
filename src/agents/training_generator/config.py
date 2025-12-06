@@ -41,7 +41,7 @@ class Config:
     # Agent config
     MAX_ITERATIONS: int = int(os.getenv("MAX_ITERATIONS", "8"))
     SEARCH_TOP_K: int = int(os.getenv("SEARCH_TOP_K", "10"))
-    MIN_RELEVANCE_SCORE: float = float(os.getenv("MIN_RELEVANCE_SCORE", "0.7"))
+    MIN_RELEVANCE_SCORE: float = float(os.getenv("MIN_RELEVANCE_SCORE", "0.1"))
     
     # LangSmith (optional)
     LANGSMITH_API_KEY: Optional[str] = os.getenv("LANGSMITH_API_KEY") or None

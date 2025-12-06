@@ -1,0 +1,148 @@
+[
+  {
+    "test_id": "TC-REP-015",
+    "title": "Verify Sales Dashboard Data Accuracy",
+    "objective": "To verify that the sales dashboard displays accurate metrics and data",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Reporting",
+    "test_type": "Functional",
+    "automation_status": "Semi-Automated",
+    "estimated_time": "20 minutes",
+    "created_by": "QA Analyst",
+    "created_date": "2024-11-01",
+    "last_updated": "2024-11-29",
+    "linked_stories": [
+      "REP-010"
+    ],
+    "linked_requirements": [
+      "REQ-REP-001",
+      "REQ-REP-002"
+    ],
+    "test_data_required": [
+      "Known order data in database",
+      "Sales data for comparison"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "Manager role account logged in",
+      "Test data seeded in database with known values",
+      "Dashboard has access to complete data"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Reports > Sales Dashboard",
+        "expected_result": "Sales dashboard loads successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Select date range: 'Last 7 Days'",
+        "expected_result": "Dashboard updates to show data for past 7 days",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Manually calculate expected total revenue from database for date range",
+        "expected_result": "Known expected value calculated (e.g., $12,450.00)",
+        "test_data": "SQL query result: $12,450.00"
+      },
+      {
+        "step_number": 4,
+        "action": "Compare dashboard 'Total Revenue' metric with calculated value",
+        "expected_result": "Dashboard shows $12,450.00 (matches calculation)",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify 'Total Orders' count matches database",
+        "expected_result": "Count matches (e.g., 187 orders)",
+        "test_data": "Database count: 187"
+      },
+      {
+        "step_number": 6,
+        "action": "Calculate Average Order Value: Revenue / Orders = $12,450 / 187",
+        "expected_result": "Dashboard AOV = $66.58 (matches calculation)",
+        "test_data": "Expected AOV: $66.58"
+      },
+      {
+        "step_number": 7,
+        "action": "Verify 'Top Selling Product' matches database query",
+        "expected_result": "Top product matches (e.g., 'Wireless Headphones' - 45 units)",
+        "test_data": "Database top product: Wireless Headphones"
+      },
+      {
+        "step_number": 8,
+        "action": "Check revenue trend chart for date range",
+        "expected_result": "Chart shows daily revenue, data points match daily totals from database",
+        "test_data": "Spot check 3 random days"
+      },
+      {
+        "step_number": 9,
+        "action": "Apply filter: Category = 'Electronics'",
+        "expected_result": "All metrics update to show Electronics-only data",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Verify filtered revenue matches database query for Electronics",
+        "expected_result": "Filtered revenue matches calculated value",
+        "test_data": "Electronics revenue: $8,200.00"
+      },
+      {
+        "step_number": 11,
+        "action": "Export data as CSV",
+        "expected_result": "CSV file downloads with dashboard data",
+        "test_data": null
+      },
+      {
+        "step_number": 12,
+        "action": "Open CSV and spot-check 10 random records against database",
+        "expected_result": "All checked records match database exactly",
+        "test_data": "Random sample of 10 orders"
+      },
+      {
+        "step_number": 13,
+        "action": "Change date range to 'Custom: Nov 1-15, 2024'",
+        "expected_result": "Dashboard recalculates for custom range",
+        "test_data": "Date range: 2024-11-01 to 2024-11-15"
+      },
+      {
+        "step_number": 14,
+        "action": "Verify 'New Customers' count is accurate",
+        "expected_result": "Count matches database query for first-time customers in range",
+        "test_data": "Expected new customers: 42"
+      }
+    ],
+    "expected_results": [
+      "All metrics accurate",
+      "Calculations correct",
+      "Filters work properly",
+      "Charts display accurate data",
+      "Export matches dashboard",
+      "Date ranges work correctly"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-29",
+        "executed_by": "QA Analyst",
+        "result": "Pass",
+        "duration": "19 minutes",
+        "environment": "Staging",
+        "notes": "All metrics verified accurate. Dashboard performance good."
+      }
+    ],
+    "defects_found": [],
+    "notes": "Critical test case. Dashboard accuracy directly impacts business decisions. Test with large datasets.",
+    "labels": [
+      "reporting",
+      "dashboard",
+      "data-accuracy",
+      "critical",
+      "analytics"
+    ]
+  }
+]

@@ -1,0 +1,121 @@
+[
+  {
+    "test_id": "TC-ORD-050",
+    "title": "Verify Order History Display",
+    "objective": "To verify that users can view their complete order history with accurate information",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Order Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Engineer",
+    "created_date": "2024-09-05",
+    "last_updated": "2024-11-10",
+    "linked_stories": [
+      "ORD-032"
+    ],
+    "linked_requirements": [
+      "REQ-ORD-010"
+    ],
+    "test_data_required": [
+      "User account with order history",
+      "At least 5 completed orders"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has at least 5 orders in different statuses",
+      "Order data is properly seeded in test database"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to Account Dashboard",
+        "expected_result": "Dashboard page loads successfully",
+        "test_data": null
+      },
+      {
+        "step_number": 2,
+        "action": "Click on 'Order History' or 'My Orders' link",
+        "expected_result": "Order history page loads displaying list of orders",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Verify orders are sorted by date (most recent first)",
+        "expected_result": "Orders appear in descending chronological order",
+        "test_data": null
+      },
+      {
+        "step_number": 4,
+        "action": "Verify each order displays: Order number, Date, Total amount, Status",
+        "expected_result": "All orders show required information in list view",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Verify status badges display correctly (e.g., 'Delivered' in green, 'Cancelled' in red)",
+        "expected_result": "Status indicators are color-coded and easily distinguishable",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Click on an order to view details",
+        "expected_result": "Order details page opens",
+        "test_data": "Select a completed order"
+      },
+      {
+        "step_number": 7,
+        "action": "Verify order details include: Items with images, Quantities, Prices, Shipping address, Payment method, Order timeline",
+        "expected_result": "All order information is displayed accurately",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "For a shipped order, verify tracking information is displayed",
+        "expected_result": "Tracking number and carrier displayed with 'Track Shipment' link",
+        "test_data": "Order in 'Shipped' status"
+      },
+      {
+        "step_number": 9,
+        "action": "Click 'Download Invoice' button",
+        "expected_result": "PDF invoice downloads with correct order information",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Return to order list and test pagination (if more than 10 orders)",
+        "expected_result": "Pagination works correctly, displays correct orders per page",
+        "test_data": "Account with 15+ orders"
+      }
+    ],
+    "expected_results": [
+      "Order history displays correctly",
+      "All orders are visible",
+      "Order details are accurate",
+      "Status updates in real-time",
+      "Tracking links functional",
+      "Invoice downloads correctly"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-10",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "9 minutes",
+        "environment": "Staging",
+        "notes": "All order information displaying correctly"
+      }
+    ],
+    "defects_found": [],
+    "notes": "Test with various order statuses. Ensure real-time status updates are reflected.",
+    "labels": [
+      "order-management",
+      "user-interface",
+      "order-history"
+    ]
+  }
+]

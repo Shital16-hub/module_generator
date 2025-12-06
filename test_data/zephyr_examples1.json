@@ -1,0 +1,133 @@
+[
+  {
+    "test_id": "TC-PAY-001",
+    "title": "Verify Successful Credit Card Payment",
+    "objective": "To verify that a customer can successfully complete a purchase using a valid credit card",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "created_by": "QA Lead",
+    "created_date": "2024-09-20",
+    "last_updated": "2024-11-15",
+    "linked_stories": [
+      "PAY-001"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-001",
+      "REQ-PAY-002"
+    ],
+    "test_data_required": [
+      "Valid credit card",
+      "Test user account",
+      "Product in stock"
+    ],
+    "environment": "Staging",
+    "preconditions": [
+      "User is logged into the platform",
+      "User has items in cart (total > $10)",
+      "Payment gateway is operational",
+      "Test credit card credentials available"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to shopping cart",
+        "expected_result": "Cart page displays with selected items",
+        "test_data": "Cart contains at least 1 item"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Proceed to Checkout' button",
+        "expected_result": "Checkout page loads with shipping information form",
+        "test_data": null
+      },
+      {
+        "step_number": 3,
+        "action": "Enter shipping address: Name: 'John Doe', Address: '123 Main St', City: 'San Francisco', State: 'CA', ZIP: '94102'",
+        "expected_result": "Shipping address is accepted and saved",
+        "test_data": "Valid US shipping address"
+      },
+      {
+        "step_number": 4,
+        "action": "Click 'Continue to Payment' button",
+        "expected_result": "Payment page loads with payment method options",
+        "test_data": null
+      },
+      {
+        "step_number": 5,
+        "action": "Select 'Credit Card' as payment method",
+        "expected_result": "Credit card form appears with fields for card number, expiry, CVV",
+        "test_data": null
+      },
+      {
+        "step_number": 6,
+        "action": "Enter credit card details: Card Number: '4111111111111111', Expiry: '12/25', CVV: '123', Name: 'John Doe'",
+        "expected_result": "Card details are accepted, no validation errors displayed",
+        "test_data": "Test Visa card: 4111111111111111"
+      },
+      {
+        "step_number": 7,
+        "action": "Review order summary and click 'Place Order' button",
+        "expected_result": "Order is submitted, loading indicator appears",
+        "test_data": null
+      },
+      {
+        "step_number": 8,
+        "action": "Wait for payment processing",
+        "expected_result": "Payment processes successfully, order confirmation page displays",
+        "test_data": null
+      },
+      {
+        "step_number": 9,
+        "action": "Verify order confirmation details: Order number, items, total amount, shipping address, payment method",
+        "expected_result": "All order details are correct and match the placed order",
+        "test_data": null
+      },
+      {
+        "step_number": 10,
+        "action": "Check email inbox for order confirmation email",
+        "expected_result": "Order confirmation email received within 2 minutes with correct order details",
+        "test_data": "Email: testuser@example.com"
+      }
+    ],
+    "expected_results": [
+      "Payment processed successfully",
+      "Order confirmation page displayed",
+      "Order number generated",
+      "Confirmation email sent",
+      "Order status set to 'Confirmed' in database",
+      "Inventory decremented"
+    ],
+    "actual_results": "As expected",
+    "pass_fail": "Pass",
+    "test_execution_history": [
+      {
+        "execution_date": "2024-11-15",
+        "executed_by": "QA Engineer 1",
+        "result": "Pass",
+        "duration": "8 minutes",
+        "environment": "Staging",
+        "notes": "All steps passed successfully"
+      },
+      {
+        "execution_date": "2024-10-30",
+        "executed_by": "QA Engineer 2",
+        "result": "Pass",
+        "duration": "9 minutes",
+        "environment": "Staging",
+        "notes": "No issues found"
+      }
+    ],
+    "defects_found": [],
+    "notes": "This is a critical path test case. Should be executed before every release.",
+    "labels": [
+      "smoke-test",
+      "critical-path",
+      "payment",
+      "checkout"
+    ]
+  }
+]
