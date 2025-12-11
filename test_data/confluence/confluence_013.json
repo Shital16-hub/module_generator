@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-ORD-002",
+    "space": "Operations",
+    "title": "Order Fulfillment Process",
+    "page_url": "https://confluence.company.com/display/OPS/Fulfillment",
+    "module": "Order Management",
+    "type": "operational_guide",
+    "labels": [
+      "orders",
+      "fulfillment",
+      "operations"
+    ],
+    "content": "# Order Fulfillment Process\n\n## Workflow\n\n### 1. Order Receipt\n- System generates pick list\n- Assigns to warehouse picker\n- Priority based on shipping method\n\n### 2. Picking\n- Picker scans order barcode\n- Navigates to product locations\n- Scans each item\n- Places in tote\n\n### 3. Quality Check\n- Verify all items present\n- Check for damage\n- Confirm quantities match\n\n### 4. Packing\n- Select appropriate box size\n- Add packing materials\n- Include packing slip\n- Seal and weigh\n\n### 5. Shipping Label\n- Print carrier label\n- Affix to package\n- Scan for tracking\n- Place in shipping zone\n\n### 6. Carrier Pickup\n- Palletize packages\n- Carrier scans manifest\n- Tracking activated\n\n## SLA Targets\n- Same-day fulfillment: 95%\n- Order accuracy: 99.8%\n- Damage rate: <0.5%\n\n## Exception Handling\n- Out of stock: Notify customer\n- Damaged item: Replace before shipping\n- Address issue: Contact customer\n\n## Metrics Tracked\n- Orders per hour\n- Pick accuracy\n- Pack time\n- Shipping cost",
+    "linked_jira_issues": [
+      "ORD-001"
+    ],
+    "linked_test_cases": [
+      "TC-ORD-002"
+    ]
+  }
+]

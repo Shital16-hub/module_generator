@@ -1,0 +1,23 @@
+[
+  {
+    "doc_id": "CONF-PAY-001",
+    "space": "Engineering",
+    "title": "Payment Gateway Integration Guide",
+    "page_url": "https://confluence.company.com/display/ENG/Payment+Gateway",
+    "module": "Payment",
+    "type": "technical_documentation",
+    "labels": [
+      "payment",
+      "api",
+      "integration"
+    ],
+    "content": "# Payment Gateway Integration Guide\n\n## Overview\nComplete guide for integrating with our payment processing system.\n\n## Supported Payment Methods\n- Credit/Debit Cards (Visa, MC, Amex, Discover)\n- PayPal\n- Apple Pay / Google Pay\n- Bank Transfers\n\n## API Endpoints\n\n### Process Payment\nPOST /api/v1/payments/process\n{\n  \"order_id\": \"ORD-123\",\n  \"payment_method\": \"credit_card\",\n  \"amount\": 99.99,\n  \"currency\": \"USD\",\n  \"payment_token\": \"tok_xxxxx\"\n}\n\n### Refund Payment\nPOST /api/v1/payments/refund\n{\n  \"transaction_id\": \"TXN-456\",\n  \"amount\": 99.99\n}\n\n## Security\n- PCI DSS Level 1 compliant\n- TLS 1.3 encryption\n- Tokenization for card storage\n- 3D Secure authentication\n\n## Error Handling\n- 400: Bad Request\n- 402: Payment Required\n- 403: Fraud Detected\n- 500: Gateway Error\n\n## Testing\nUse test card: 4111111111111111\nTest CVV: 123\nTest Expiry: 12/25",
+    "linked_jira_issues": [
+      "PAY-001",
+      "PAY-002"
+    ],
+    "linked_test_cases": [
+      "TC-PAY-001"
+    ]
+  }
+]

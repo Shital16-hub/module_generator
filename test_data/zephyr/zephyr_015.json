@@ -1,0 +1,44 @@
+[
+  {
+    "test_id": "TC-ORD-001",
+    "title": "Verify Order History Display",
+    "objective": "Verify users can view their complete order history",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Order Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "ORD-001"
+    ],
+    "linked_requirements": [
+      "REQ-ORD-010"
+    ],
+    "preconditions": [
+      "User has order history"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to My Orders",
+        "expected_result": "Order list displays"
+      },
+      {
+        "step_number": 2,
+        "action": "Verify order details",
+        "expected_result": "Number, date, total shown"
+      },
+      {
+        "step_number": 3,
+        "action": "Click on order",
+        "expected_result": "Order details page"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify tracking info",
+        "expected_result": "Tracking number displayed"
+      }
+    ]
+  }
+]

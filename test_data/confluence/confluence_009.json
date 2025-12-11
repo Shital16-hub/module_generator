@@ -1,0 +1,23 @@
+[
+  {
+    "doc_id": "CONF-SRCH-003",
+    "space": "Engineering",
+    "title": "Search Analytics and Optimization",
+    "page_url": "https://confluence.company.com/display/ENG/Search+Analytics",
+    "module": "Search",
+    "type": "analytics_guide",
+    "labels": [
+      "search",
+      "analytics",
+      "optimization"
+    ],
+    "content": "# Search Analytics and Optimization\n\n## Key Metrics\n\n### Query Performance\n- Total searches: 500K/day\n- Avg response time: 85ms\n- p95 latency: 150ms\n- p99 latency: 300ms\n\n### User Behavior\n- Avg searches per session: 2.3\n- Click-through rate: 42%\n- Zero-result rate: 8%\n- Refinement rate: 35%\n\n### Popular Searches\nTop 10 updated hourly:\n1. \"iPhone\"\n2. \"laptop\"\n3. \"headphones\"\n...\n\n## Optimization Strategies\n\n### Query Analysis\nMonitor for:\n- High-volume zero-result queries\n- Slow queries (>500ms)\n- High bounce rate queries\n- Spelling variations\n\n### A/B Testing\nCurrent tests:\n- Relevance algorithm v2\n- Filter UI layout\n- Suggestion count (5 vs 10)\n\n### Synonym Management\nAdd synonyms based on:\n- User query patterns\n- Zero-result searches\n- Product attributes\n\n### Result Ranking\nSignals used:\n- Text relevance: 40%\n- Popularity: 25%\n- Conversion rate: 20%\n- Recency: 10%\n- Inventory: 5%\n\n## Search Quality\n\n### Manual Review\nWeekly spot checks:\n- Top 100 queries\n- Random sample of 50\n- Zero-result queries\n\n### Automated Tests\n- Regression tests for key queries\n- Performance benchmarks\n- Relevance scoring\n\n## Reporting\n- Daily search quality report\n- Weekly optimization recommendations\n- Monthly trend analysis\n\n## Tools\n- Kibana for log analysis\n- Grafana for metrics\n- Custom search quality dashboard",
+    "linked_jira_issues": [
+      "SRCH-001",
+      "SRCH-003"
+    ],
+    "linked_test_cases": [
+      "TC-SRCH-002"
+    ]
+  }
+]

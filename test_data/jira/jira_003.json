@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "PAY-003",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Payment",
+    "title": "Apple Pay and Google Pay Integration",
+    "description": "As a mobile user, I want to pay using digital wallets so that I can checkout faster.",
+    "acceptance_criteria": [
+      "Apple Pay button displays for iOS users",
+      "Google Pay button displays for Android users",
+      "Payment processes seamlessly with biometric authentication",
+      "Transaction receipts are stored in wallet apps"
+    ],
+    "story_points": 8,
+    "epic": "Mobile Commerce",
+    "sprint": "Sprint 24",
+    "assignee": "Sarah Kim",
+    "labels": [
+      "payment",
+      "mobile",
+      "digital-wallet"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001",
+        "PAY-002"
+      ],
+      "tested_by": [
+        "TC-PAY-005"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "PAY-001"
+      ]
+    }
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "AUTH-003",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Authentication",
+    "title": "Password Reset Flow",
+    "description": "As a user, I want to reset my password if I forget it so that I can regain access to my account.",
+    "acceptance_criteria": [
+      "Forgot password link on login page",
+      "System sends reset link to registered email",
+      "Reset link expires after 1 hour",
+      "User can set new password meeting requirements",
+      "User is notified of password change via email"
+    ],
+    "story_points": 5,
+    "epic": "User Authentication",
+    "sprint": "Sprint 20",
+    "assignee": "Emily Rodriguez",
+    "labels": [
+      "authentication",
+      "password",
+      "security"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "AUTH-001"
+      ],
+      "tested_by": [
+        "TC-AUTH-005"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "AUTH-001"
+      ]
+    }
+  }
+]

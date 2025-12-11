@@ -1,242 +1,161 @@
-#!/usr/bin/env python3
 """
-Index JIRA / Confluence / Zephyr examples into Qdrant using LangChain Documents.
-Supports multiple files: jira_examples*.json, zephyr_examples*.json, confluence_examples*.json
+Index test data into Qdrant - Updated for separate files
 """
 
+import json
 import sys
 from pathlib import Path
-import json
-from typing import List
 
-# Fix imports when running script directly
-ROOT_DIR = Path(__file__).resolve().parents[1]
-if str(ROOT_DIR) not in sys.path:
-    sys.path.insert(0, str(ROOT_DIR))
+# Add project root to Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
 
-from src.agents.training_generator.config import config
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, VectorParams
-from langchain_core.documents import Document
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_qdrant import QdrantVectorStore
-from tqdm import tqdm
+from qdrant_client.models import Distance, VectorParams, PointStruct
+from sentence_transformers import SentenceTransformer
+from src.config import config
+from rich.console import Console
+from rich.progress import Progress
+import uuid
 
-print("🚀 Starting data indexing pipeline...")
+console = Console()
 
-# ---------- Adapters: raw JSON -> Document ----------
+def load_all_documents(base_dir: Path):
+    """Load all JSON documents from separate files"""
+    documents = []
+    
+    # Load JIRA stories
+    jira_dir = base_dir / "jira"
+    if jira_dir.exists():
+        for file_path in sorted(jira_dir.glob("jira_*.json")):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                documents.extend(data)
+        console.print(f"✅ Loaded {len(list(jira_dir.glob('jira_*.json')))} JIRA files")
+    
+    # Load Confluence docs
+    confluence_dir = base_dir / "confluence"
+    if confluence_dir.exists():
+        for file_path in sorted(confluence_dir.glob("confluence_*.json")):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                documents.extend(data)
+        console.print(f"✅ Loaded {len(list(confluence_dir.glob('confluence_*.json')))} Confluence files")
+    
+    # Load Zephyr tests
+    zephyr_dir = base_dir / "zephyr"
+    if zephyr_dir.exists():
+        for file_path in sorted(zephyr_dir.glob("zephyr_*.json")):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                documents.extend(data)
+        console.print(f"✅ Loaded {len(list(zephyr_dir.glob('zephyr_*.json')))} Zephyr files")
+    
+    return documents
 
-def jira_to_document(story: dict) -> Document:
-    """Convert JIRA story JSON to LangChain Document."""
-    text_parts = [
-        story.get("title", ""),
-        story.get("description", ""),
-        "Acceptance Criteria:",
-    ]
-    text_parts.extend(story.get("acceptance_criteria", []))
-    page_content = "\n\n".join(p for p in text_parts if p)
+def create_text_for_embedding(doc: dict) -> str:
+    """Create searchable text from document"""
+    doc_type = doc.get('type', '')
+    
+    if doc_type == "User Story":
+        return f"{doc.get('title', '')} {doc.get('description', '')} {doc.get('module', '')} {' '.join(doc.get('acceptance_criteria', []))}"
+    elif doc_type in ["technical_documentation", "user_guide", "compliance_documentation", "operational_guide", "configuration_guide", "api_documentation", "analytics_guide"]:
+        return f"{doc.get('title', '')} {doc.get('content', '')} {doc.get('module', '')}"
+    else:  # Test case
+        return f"{doc.get('title', '')} {doc.get('objective', '')} {doc.get('module', '')}"
 
-    metadata = {
-        "id": story.get("story_id"),
-        "source": "JIRA",
-        "type": "user_story",
-        "module": story.get("module"),
-        "title": story.get("title"),
-        "status": story.get("status"),
-        "priority": story.get("priority"),
-        "epic": story.get("epic"),
-        "story_points": story.get("story_points"),
-        "labels": story.get("labels", []),
-        "tested_by": story.get("linked_issues", {}).get("tested_by", []),
-        "relates_to": story.get("linked_issues", {}).get("relates_to", []),
-        "blocks": story.get("linked_issues", {}).get("blocks", []),
-        "depends_on": story.get("linked_issues", {}).get("depends_on", []),
-    }
-    return Document(page_content=page_content, metadata=metadata)
-
-def zephyr_to_document(test: dict) -> Document:
-    """Convert Zephyr test case JSON to LangChain Document."""
-    steps_text = "\n".join(
-        f"Step {s['step_number']}: {s['action']}\nExpected: {s['expected_result']}"
-        for s in test.get("test_steps", [])
-    )
-
-    text_parts = [
-        test.get("title", ""),
-        f"Objective: {test.get('objective', '')}",
-        "Test Steps:",
-        steps_text,
-    ]
-    page_content = "\n\n".join(p for p in text_parts if p)
-
-    metadata = {
-        "id": test.get("test_id"),
-        "source": "Zephyr",
-        "type": "test_case",
-        "module": test.get("module"),
-        "title": test.get("title"),
-        "objective": test.get("objective"),
-        "priority": test.get("priority"),
-        "test_type": test.get("test_type"),
-        "automation_status": test.get("automation_status"),
-        "linked_stories": test.get("linked_stories", []),
-        "linked_requirements": test.get("linked_requirements", []),
-    }
-    return Document(page_content=page_content, metadata=metadata)
-
-def confluence_to_document(doc: dict) -> Document:
-    """Convert Confluence doc JSON to LangChain Document."""
-    text_parts = [
-        doc.get("title", ""),
-        doc.get("content", ""),
-    ]
-    page_content = "\n\n".join(p for p in text_parts if p)
-
-    metadata = {
-        "id": doc.get("doc_id"),
-        "source": "Confluence",
-        "type": "documentation",
-        "module": doc.get("module"),
-        "title": doc.get("title"),
-        "doc_type": doc.get("type"),
-        "labels": doc.get("labels", []),
-        "page_url": doc.get("page_url", ""),
-        "linked_jira_issues": doc.get("linked_jira_issues", []),
-        "linked_test_cases": doc.get("linked_test_cases", []),
-    }
-    return Document(page_content=page_content, metadata=metadata)
-
-# ---------- Helpers ----------
-
-def load_json(path: Path):
-    """Load JSON file."""
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-# ---------- Multi-file indexing ----------
-
-def index_jira_files(base: Path) -> List[Document]:
-    """Index all jira_examples*.json files in test_data folder."""
-    jira_docs: List[Document] = []
-    jira_files = list(base.glob("jira_examples*.json"))
+def index_documents():
+    """Index all documents into Qdrant"""
     
-    print(f"📂 Found {len(jira_files)} JIRA files in test_data/")
+    console.print("\n[bold cyan]🚀 Starting Indexing Process[/bold cyan]\n")
     
-    for path in jira_files:
-        print(f"  Indexing {path.name}...")
-        data = load_json(path)
-        for story in data:
-            jira_docs.append(jira_to_document(story))
+    # Initialize
+    client = QdrantClient(url=config.QDRANT_URL)
+    model = SentenceTransformer(config.EMBEDDING_MODEL)
     
-    return jira_docs
-
-def index_zephyr_files(base: Path) -> List[Document]:
-    """Index all zephyr_examples*.json files in test_data folder."""
-    zephyr_docs: List[Document] = []
-    zephyr_files = list(base.glob("zephyr_examples*.json"))
+    # Load documents
+    base_dir = project_root / "test_data"
+    documents = load_all_documents(base_dir)
     
-    print(f"📂 Found {len(zephyr_files)} Zephyr files in test_data/")
+    console.print(f"\n📊 Total documents to index: [bold green]{len(documents)}[/bold green]\n")
     
-    for path in zephyr_files:
-        print(f"  Indexing {path.name}...")
-        data = load_json(path)
-        for test in data:
-            zephyr_docs.append(zephyr_to_document(test))
+    # Recreate collection
+    console.print(f"🗑️  Deleting existing collection: {config.QDRANT_COLLECTION_NAME}")
+    try:
+        client.delete_collection(config.QDRANT_COLLECTION_NAME)
+    except:
+        pass
     
-    return zephyr_docs
-
-def index_confluence_files(base: Path) -> List[Document]:
-    """Index confluence_examples*.json files (optional)."""
-    conf_files = list(base.glob("confluence_examples*.json"))
-    if not conf_files:
-        print("ℹ️  No Confluence files found in test_data/ (skipping)")
-        return []
-    
-    conf_docs: List[Document] = []
-    print(f"📂 Found {len(conf_files)} Confluence files in test_data/")
-    
-    for path in conf_files:
-        print(f"  Indexing {path.name}...")
-        data = load_json(path)
-        for doc in data:
-            conf_docs.append(confluence_to_document(doc))
-    
-    return conf_docs
-
-# ---------- Main ----------
-
-def main():
-    base = Path("test_data")  # Look INSIDE test_data folder
-    
-    if not base.exists():
-        print(f"❌ test_data folder not found at: {base.absolute()}")
-        print("Please create test_data/ folder with your JSON files.")
-        return
-    
-    print(f"🔍 Searching for JSON files in: {base.absolute()}")
-    
-    # Load all documents
-    jira_docs = index_jira_files(base)
-    zephyr_docs = index_zephyr_files(base)
-    conf_docs = index_confluence_files(base)
-    
-    all_docs = jira_docs + conf_docs + zephyr_docs
-    
-    print(f"\n📊 Loaded {len(all_docs)} total documents:")
-    print(f"  - JIRA stories: {len(jira_docs)}")
-    print(f"  - Zephyr tests: {len(zephyr_docs)}")
-    print(f"  - Confluence docs: {len(conf_docs)}")
-    
-    if not all_docs:
-        print("❌ No documents found! Make sure JSON files matching 'jira_examples*.json' or 'zephyr_examples*.json' are in test_data/")
-        return
-    
-    # Setup embeddings and Qdrant
-    embeddings = HuggingFaceEmbeddings(
-        model_name=config.EMBEDDING_MODEL_NAME,
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True},
-    )
-    
-    client = QdrantClient(
-        url=config.QDRANT_URL, 
-        api_key=config.QDRANT_API_KEY,
-        check_compatibility=False,
-    )
-    
-    # Delete and recreate collection
-    collection_name = config.QDRANT_COLLECTION_NAME
-    if client.collection_exists(collection_name):
-        client.delete_collection(collection_name)
-        print(f"🗑️  Deleted existing collection: {collection_name}")
-    
-    # Create new collection
-    sample_vec = embeddings.embed_query("sample text")
+    console.print(f"✨ Creating collection: {config.QDRANT_COLLECTION_NAME}")
     client.create_collection(
-        collection_name=collection_name,
-        vectors_config=VectorParams(
-            size=len(sample_vec),
-            distance=Distance.COSINE,
-        ),
+        collection_name=config.QDRANT_COLLECTION_NAME,
+        vectors_config=VectorParams(size=384, distance=Distance.COSINE)
     )
-    print(f"✅ Collection '{collection_name}' created")
     
-    # Index documents
-    print("\n🔄 Indexing documents...")
-    vectorstore = QdrantVectorStore.from_documents(
-        documents=all_docs,
-        embedding=embeddings,
-        url=config.QDRANT_URL,
-        api_key=config.QDRANT_API_KEY,
-        collection_name=collection_name,
+    # Index documents with progress bar
+    points = []
+    with Progress() as progress:
+        task = progress.add_task("[cyan]Indexing documents...", total=len(documents))
+        
+        for doc in documents:
+            # Create embedding
+            text = create_text_for_embedding(doc)
+            embedding = model.encode(text).tolist()
+            
+            # Determine document type and ID
+            if 'story_id' in doc:
+                doc_type = "jira_story"
+                doc_id = doc['story_id']
+            elif 'doc_id' in doc:
+                doc_type = "confluence_doc"
+                doc_id = doc['doc_id']
+            elif 'test_id' in doc:
+                doc_type = "test_case"
+                doc_id = doc['test_id']
+            else:
+                doc_type = "unknown"
+                doc_id = str(uuid.uuid4())
+            
+            # Create point
+            point = PointStruct(
+                id=str(uuid.uuid4()),
+                vector=embedding,
+                payload={
+                    "document_id": doc_id,
+                    "document_type": doc_type,
+                    "module": doc.get('module', ''),
+                    "content": json.dumps(doc)
+                }
+            )
+            points.append(point)
+            progress.update(task, advance=1)
+    
+    # Upload to Qdrant
+    console.print("\n📤 Uploading to Qdrant...")
+    client.upsert(
+        collection_name=config.QDRANT_COLLECTION_NAME,
+        points=points
     )
     
     # Verify
-    info = client.get_collection(collection_name)
-    print("\n🎉 Indexing complete!")
-    print(f"📊 Total documents: {info.points_count}")
-    print(f"📋 Collection: {collection_name}")
-    print(f"🧬 Vector size: {info.config.params.vectors.size}")
+    collection_info = client.get_collection(config.QDRANT_COLLECTION_NAME)
+    
+    console.print("\n[bold green]✅ Indexing Complete![/bold green]\n")
+    console.print(f"📊 Collection: {config.QDRANT_COLLECTION_NAME}")
+    console.print(f"📈 Total vectors: {collection_info.points_count}")
+    console.print(f"🎯 Vector size: {collection_info.config.params.vectors.size}")
+    
+    # Summary by type
+    jira_count = len([d for d in documents if 'story_id' in d])
+    conf_count = len([d for d in documents if 'doc_id' in d])
+    test_count = len([d for d in documents if 'test_id' in d])
+    
+    console.print("\n📋 Document Breakdown:")
+    console.print(f"  JIRA Stories:      {jira_count}")
+    console.print(f"  Confluence Docs:   {conf_count}")
+    console.print(f"  Zephyr Tests:      {test_count}")
+    
+    console.print("\n✨ Ready for queries!\n")
 
 if __name__ == "__main__":
-    main()
+    index_documents()

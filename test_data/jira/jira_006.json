@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "INV-001",
+    "type": "User Story",
+    "priority": "Critical",
+    "status": "Done",
+    "module": "Inventory",
+    "title": "Real-time Inventory Updates",
+    "description": "As a warehouse manager, I want inventory levels to update in real-time so that I can prevent overselling.",
+    "acceptance_criteria": [
+      "Inventory decrements immediately upon order confirmation",
+      "System reserves inventory during checkout (15-minute hold)",
+      "Low stock alerts trigger when inventory falls below threshold",
+      "Inventory updates are reflected across all sales channels"
+    ],
+    "story_points": 13,
+    "epic": "Warehouse Management",
+    "sprint": "Sprint 21",
+    "assignee": "Robert Martinez",
+    "labels": [
+      "inventory",
+      "critical",
+      "real-time"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "INV-002",
+        "INV-003"
+      ],
+      "tested_by": [
+        "TC-INV-001",
+        "TC-INV-002"
+      ],
+      "blocks": [
+        "INV-004"
+      ],
+      "depends_on": []
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "story_id": "NOTIF-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Testing",
+    "module": "Notifications",
+    "title": "Order Status Notifications",
+    "description": "As a customer, I want to receive notifications about my order status so that I stay informed.",
+    "acceptance_criteria": [
+      "Email sent for: order confirmation, shipment, delivery",
+      "SMS notifications for critical updates (opt-in)",
+      "Push notifications via mobile app",
+      "User can customize notification preferences",
+      "Notifications are sent within 2 minutes of status change"
+    ],
+    "story_points": 8,
+    "epic": "Customer Communication",
+    "sprint": "Sprint 23",
+    "assignee": "Lisa Thompson",
+    "labels": [
+      "notifications",
+      "email",
+      "sms",
+      "communication"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001"
+      ],
+      "tested_by": [
+        "TC-NOTIF-001",
+        "TC-NOTIF-002"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "ORD-001"
+      ]
+    }
+  }
+]

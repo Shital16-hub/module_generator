@@ -1,0 +1,43 @@
+[
+  {
+    "test_id": "TC-REP-001",
+    "title": "Verify Sales Dashboard Data",
+    "objective": "Verify dashboard displays accurate sales metrics",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Reporting",
+    "test_type": "Functional",
+    "automation_status": "Semi-Automated",
+    "estimated_time": "20 minutes",
+    "linked_stories": [
+      "REP-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Manager logged in",
+      "Test data seeded"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to dashboard",
+        "expected_result": "Dashboard loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Select date range",
+        "expected_result": "Data filtered"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify total revenue",
+        "expected_result": "Matches database"
+      },
+      {
+        "step_number": 4,
+        "action": "Export report",
+        "expected_result": "CSV downloaded"
+      }
+    ]
+  }
+]

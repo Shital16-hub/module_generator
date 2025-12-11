@@ -1,0 +1,42 @@
+[
+  {
+    "test_id": "TC-NOTIF-001",
+    "title": "Verify Order Confirmation Email",
+    "objective": "Verify email is sent after order placement",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Notifications",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "linked_stories": [
+      "NOTIF-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User has valid email"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Complete order",
+        "expected_result": "Order confirmed"
+      },
+      {
+        "step_number": 2,
+        "action": "Check email within 2 min",
+        "expected_result": "Email received"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify email content",
+        "expected_result": "Order details correct"
+      },
+      {
+        "step_number": 4,
+        "action": "Click track order link",
+        "expected_result": "Opens tracking page"
+      }
+    ]
+  }
+]

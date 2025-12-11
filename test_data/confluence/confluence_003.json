@@ -1,0 +1,21 @@
+[
+  {
+    "doc_id": "CONF-PAY-003",
+    "space": "Product",
+    "title": "Payment Processing User Guide",
+    "page_url": "https://confluence.company.com/display/PROD/Payment+User+Guide",
+    "module": "Payment",
+    "type": "user_guide",
+    "labels": [
+      "payment",
+      "customer-facing",
+      "guide"
+    ],
+    "content": "# Payment Processing - Customer Guide\n\n## How to Make a Payment\n\n### Step 1: Add Items to Cart\nBrowse products and click \"Add to Cart\"\n\n### Step 2: Proceed to Checkout\nClick cart icon and select \"Checkout\"\n\n### Step 3: Enter Shipping Information\nProvide delivery address and contact details\n\n### Step 4: Choose Payment Method\nSelect from available options:\n- Credit/Debit Card\n- PayPal\n- Apple Pay / Google Pay\n\n### Step 5: Complete Payment\nEnter payment details and confirm\n\n## Saved Payment Methods\nSave cards for faster checkout:\n1. Go to Account > Payment Methods\n2. Click \"Add Payment Method\"\n3. Enter card details\n4. Check \"Set as default\" (optional)\n5. Click \"Save\"\n\n## Payment Security\n- All transactions encrypted\n- Card details never stored\n- Secure payment gateway used\n- Fraud monitoring active\n\n## Refunds\nRefunds processed to original payment method:\n- Credit Cards: 5-7 business days\n- PayPal: 24-48 hours\n- Digital Wallets: 3-5 business days\n\n## Payment Issues\nIf payment fails:\n1. Check card details are correct\n2. Verify sufficient funds\n3. Contact your bank\n4. Try different payment method\n5. Contact customer support\n\n## Frequently Asked Questions\n\n**Q: Is my payment information safe?**\nA: Yes, we use industry-standard encryption.\n\n**Q: Can I use multiple payment methods?**\nA: No, one payment method per order.\n\n**Q: How do I update my saved card?**\nA: Go to Account > Payment Methods > Edit",
+    "linked_jira_issues": [
+      "PAY-001",
+      "PAY-004"
+    ],
+    "linked_test_cases": []
+  }
+]

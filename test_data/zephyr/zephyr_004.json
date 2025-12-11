@@ -1,0 +1,48 @@
+[
+  {
+    "test_id": "TC-PAY-004",
+    "title": "Verify Saved Payment Method Selection",
+    "objective": "Verify users can select and use saved payment methods",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "linked_stories": [
+      "PAY-004"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User has saved payment methods",
+      "User is logged in"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to checkout",
+        "expected_result": "Payment page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "View saved payment methods",
+        "expected_result": "Cards displayed (last 4 digits)"
+      },
+      {
+        "step_number": 3,
+        "action": "Select saved card",
+        "expected_result": "Card selected"
+      },
+      {
+        "step_number": 4,
+        "action": "Enter CVV only",
+        "expected_result": "CVV accepted"
+      },
+      {
+        "step_number": 5,
+        "action": "Complete payment",
+        "expected_result": "Order successful"
+      }
+    ]
+  }
+]

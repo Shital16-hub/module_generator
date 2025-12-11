@@ -1,0 +1,41 @@
+[
+  {
+    "story_id": "AUTH-002",
+    "type": "User Story",
+    "priority": "Critical",
+    "status": "In Progress",
+    "module": "Authentication",
+    "title": "Multi-Factor Authentication (MFA)",
+    "description": "As a security-conscious user, I want to enable two-factor authentication so that my account remains secure.",
+    "acceptance_criteria": [
+      "User can enable/disable MFA from account settings",
+      "System supports SMS and authenticator app-based MFA",
+      "User receives setup instructions with QR code",
+      "Backup codes generated for account recovery",
+      "MFA required on login after enabling"
+    ],
+    "story_points": 13,
+    "epic": "Security Enhancement",
+    "sprint": "Sprint 24",
+    "assignee": "Michael Zhang",
+    "labels": [
+      "authentication",
+      "security",
+      "mfa"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "AUTH-001",
+        "AUTH-003"
+      ],
+      "tested_by": [
+        "TC-AUTH-003",
+        "TC-AUTH-004"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "AUTH-001"
+      ]
+    }
+  }
+]

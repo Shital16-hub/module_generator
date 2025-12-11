@@ -1,0 +1,46 @@
+[
+  {
+    "test_id": "TC-PAY-001",
+    "title": "Verify Successful Credit Card Payment",
+    "objective": "Verify that a customer can successfully complete a purchase using a valid credit card",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "PAY-001"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-001"
+    ],
+    "preconditions": [
+      "User is logged into the platform",
+      "User has items in cart",
+      "Test credit card credentials available"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to checkout",
+        "expected_result": "Checkout page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Enter card: 4111111111111111, 12/25, 123",
+        "expected_result": "Card accepted"
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Place Order'",
+        "expected_result": "Payment processes"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify confirmation page",
+        "expected_result": "Order confirmed"
+      }
+    ]
+  }
+]

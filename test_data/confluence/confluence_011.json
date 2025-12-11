@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-AUTH-002",
+    "space": "Product",
+    "title": "Account Security Best Practices",
+    "page_url": "https://confluence.company.com/display/PROD/Security+Best+Practices",
+    "module": "Authentication",
+    "type": "user_guide",
+    "labels": [
+      "authentication",
+      "security",
+      "user-guide"
+    ],
+    "content": "# Account Security Best Practices\n\n## Strong Passwords\n\n### Requirements\n- Minimum 8 characters\n- At least one uppercase letter\n- At least one number\n- At least one special character\n- No common passwords\n\n### Password Manager\nWe recommend using:\n- 1Password\n- LastPass\n- Dashlane\n- Bitwarden\n\n## Enable Two-Factor Authentication\n\n### Why Enable MFA?\n- 99.9% protection against account takeover\n- Required for admin accounts\n- Recommended for all users\n\n### Setup Steps\n1. Go to Account Settings > Security\n2. Click \"Enable Two-Factor Authentication\"\n3. Choose method (App or SMS)\n4. Scan QR code with authenticator app\n5. Enter verification code\n6. Save backup codes\n\n### Recommended Apps\n- Google Authenticator\n- Authy\n- Microsoft Authenticator\n\n## Account Recovery\n\n### Save Backup Codes\n- 10 single-use codes generated\n- Store in password manager\n- Print and keep in safe place\n- Use if you lose access to MFA device\n\n### Trusted Devices\nMark devices you use regularly:\n- Skip MFA for 30 days on trusted devices\n- Can revoke trust at any time\n- View all trusted devices in settings\n\n## Recognizing Suspicious Activity\n\n### Warning Signs\n- Login from unfamiliar location\n- Login from new device\n- Password reset requests you didn't make\n- Account locked unexpectedly\n\n### What to Do\n1. Change password immediately\n2. Review recent account activity\n3. Revoke all sessions\n4. Enable MFA if not already enabled\n5. Contact support if concerned\n\n## Privacy Settings\n\n### Information Sharing\nControl what's visible:\n- Profile information\n- Order history\n- Reviews and ratings\n- Wishlist\n\n### Marketing Preferences\nManage communications:\n- Promotional emails\n- SMS notifications\n- Personalized recommendations\n- Third-party sharing\n\n## Regular Maintenance\n- Change password every 90 days\n- Review authorized devices monthly\n- Check login activity weekly\n- Update recovery email/phone\n\n## If Your Account is Compromised\n1. **Immediately:**\n   - Reset password\n   - Enable MFA\n   - Review orders for unauthorized purchases\n   \n2. **Check:**\n   - Saved payment methods\n   - Shipping addresses\n   - Account email/phone\n   \n3. **Contact Support:**\n   - Report the incident\n   - Request security review\n   - Monitor account for 30 days\n\n## Support\n- Security incidents: security@company.com\n- General questions: support@company.com\n- Phone: 1-800-XXX-XXXX",
+    "linked_jira_issues": [
+      "AUTH-001",
+      "AUTH-002",
+      "AUTH-003"
+    ],
+    "linked_test_cases": []
+  }
+]

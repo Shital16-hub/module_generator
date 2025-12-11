@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "SRCH-003",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Search",
+    "title": "Search Suggestions and Typo Tolerance",
+    "description": "As a customer, I want the search to handle typos and suggest corrections so that I can find products even with misspellings.",
+    "acceptance_criteria": [
+      "System suggests 'Did you mean...' for common misspellings",
+      "Fuzzy matching finds similar product names",
+      "Search suggestions include popular searches",
+      "Synonym support (e.g., 'phone' finds 'smartphone')"
+    ],
+    "story_points": 8,
+    "epic": "Search Intelligence",
+    "sprint": "Sprint 23",
+    "assignee": "Alex Kumar",
+    "labels": [
+      "search",
+      "nlp",
+      "intelligence"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "SRCH-001"
+      ],
+      "tested_by": [
+        "TC-SRCH-004"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "SRCH-001"
+      ]
+    }
+  }
+]

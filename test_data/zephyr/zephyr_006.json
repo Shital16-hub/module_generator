@@ -1,0 +1,45 @@
+[
+  {
+    "test_id": "TC-INV-001",
+    "title": "Verify Real-time Inventory Update on Order",
+    "objective": "Verify inventory decrements immediately upon order confirmation",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Inventory",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "INV-001"
+    ],
+    "linked_requirements": [
+      "REQ-INV-001"
+    ],
+    "preconditions": [
+      "Product has known stock level",
+      "No other orders being processed"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Check initial inventory",
+        "expected_result": "Current stock: 50"
+      },
+      {
+        "step_number": 2,
+        "action": "Add 3 units to cart",
+        "expected_result": "Cart updated"
+      },
+      {
+        "step_number": 3,
+        "action": "Complete checkout",
+        "expected_result": "Order confirmed"
+      },
+      {
+        "step_number": 4,
+        "action": "Check inventory",
+        "expected_result": "Stock now: 47"
+      }
+    ]
+  }
+]

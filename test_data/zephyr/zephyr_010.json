@@ -1,0 +1,42 @@
+[
+  {
+    "test_id": "TC-SRCH-002",
+    "title": "Verify Search Result Sorting",
+    "objective": "Verify sort options reorder results correctly",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Search",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "linked_stories": [
+      "SRCH-002"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Search results displayed"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Perform search",
+        "expected_result": "Results shown"
+      },
+      {
+        "step_number": 2,
+        "action": "Select 'Price: Low to High'",
+        "expected_result": "Prices ascending"
+      },
+      {
+        "step_number": 3,
+        "action": "Select 'Price: High to Low'",
+        "expected_result": "Prices descending"
+      },
+      {
+        "step_number": 4,
+        "action": "Select 'Rating'",
+        "expected_result": "Highest rated first"
+      }
+    ]
+  }
+]

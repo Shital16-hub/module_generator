@@ -1,0 +1,53 @@
+[
+  {
+    "test_id": "TC-INV-003",
+    "title": "Verify Bulk Inventory Import via CSV",
+    "objective": "Verify CSV import updates multiple products correctly",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Inventory",
+    "test_type": "Functional",
+    "automation_status": "Manual",
+    "estimated_time": "20 minutes",
+    "linked_stories": [
+      "INV-003"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Warehouse staff logged in",
+      "CSV file prepared with test data"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to bulk import",
+        "expected_result": "Import page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Upload CSV file",
+        "expected_result": "File accepted"
+      },
+      {
+        "step_number": 3,
+        "action": "Review validation results",
+        "expected_result": "No errors"
+      },
+      {
+        "step_number": 4,
+        "action": "Confirm import",
+        "expected_result": "Import starts"
+      },
+      {
+        "step_number": 5,
+        "action": "Wait for completion",
+        "expected_result": "Success message"
+      },
+      {
+        "step_number": 6,
+        "action": "Verify inventory updated",
+        "expected_result": "Quantities match CSV"
+      }
+    ]
+  }
+]

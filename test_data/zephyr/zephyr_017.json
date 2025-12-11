@@ -1,0 +1,47 @@
+[
+  {
+    "test_id": "TC-USR-001",
+    "title": "Verify Profile Update",
+    "objective": "Verify users can update profile information",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "User Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "USR-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to Profile Settings",
+        "expected_result": "Profile page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Edit Profile'",
+        "expected_result": "Fields editable"
+      },
+      {
+        "step_number": 3,
+        "action": "Update name and phone",
+        "expected_result": "Changes accepted"
+      },
+      {
+        "step_number": 4,
+        "action": "Save changes",
+        "expected_result": "Profile updated"
+      },
+      {
+        "step_number": 5,
+        "action": "Verify changes persisted",
+        "expected_result": "New info displayed"
+      }
+    ]
+  }
+]

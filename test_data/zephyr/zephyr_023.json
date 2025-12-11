@@ -1,0 +1,43 @@
+[
+  {
+    "test_id": "TC-PROMO-001",
+    "title": "Verify Discount Code Application",
+    "objective": "Verify promo codes apply discounts correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Promotions",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "PROMO-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Valid promo code: SAVE20",
+      "Items in cart"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to checkout",
+        "expected_result": "Order summary visible"
+      },
+      {
+        "step_number": 2,
+        "action": "Enter code: SAVE20",
+        "expected_result": "Code accepted"
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Apply'",
+        "expected_result": "20% discount applied"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify total",
+        "expected_result": "Total reduced by 20%"
+      }
+    ]
+  }
+]

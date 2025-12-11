@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "PROMO-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "Done",
+    "module": "Promotions",
+    "title": "Discount Code Application",
+    "description": "As a customer, I want to apply discount codes so that I can save money on my purchase.",
+    "acceptance_criteria": [
+      "Promo code field on checkout page",
+      "System validates code and applies discount",
+      "Discount is reflected in order total",
+      "Only one promo code per order",
+      "Expired or invalid codes show error message"
+    ],
+    "story_points": 5,
+    "epic": "Marketing Tools",
+    "sprint": "Sprint 22",
+    "assignee": "Priya Sharma",
+    "labels": [
+      "promotions",
+      "marketing",
+      "discounts"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001",
+        "CART-001"
+      ],
+      "tested_by": [
+        "TC-PROMO-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "CART-001"
+      ]
+    }
+  }
+]

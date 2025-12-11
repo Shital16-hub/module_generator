@@ -1,0 +1,37 @@
+[
+  {
+    "test_id": "TC-SRCH-003",
+    "title": "Verify Search Typo Tolerance",
+    "objective": "Verify system handles misspellings and suggests corrections",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Search",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "SRCH-003"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Search index populated"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Search 'hedphones' (typo)",
+        "expected_result": "Suggest 'headphones'"
+      },
+      {
+        "step_number": 2,
+        "action": "Click suggestion",
+        "expected_result": "Corrected search runs"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify results",
+        "expected_result": "Headphones displayed"
+      }
+    ]
+  }
+]

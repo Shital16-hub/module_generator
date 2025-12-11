@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-SRCH-001",
+    "space": "Engineering",
+    "title": "Search Implementation with Elasticsearch",
+    "page_url": "https://confluence.company.com/display/ENG/Search+Implementation",
+    "module": "Search",
+    "type": "technical_documentation",
+    "labels": [
+      "search",
+      "elasticsearch",
+      "implementation"
+    ],
+    "content": "# Search Implementation - Elasticsearch\n\n## Architecture\n\n### Cluster Setup\n- 3-node Elasticsearch cluster\n- 1 master, 2 data nodes\n- Version: 8.x\n- Cloud provider: AWS Elasticsearch\n\n### Index Structure\n**products_v1:**\n```json\n{\n  \"mappings\": {\n    \"properties\": {\n      \"id\": {\"type\": \"keyword\"},\n      \"name\": {\"type\": \"text\", \"analyzer\": \"english\"},\n      \"description\": {\"type\": \"text\"},\n      \"category\": {\"type\": \"keyword\"},\n      \"price\": {\"type\": \"float\"},\n      \"rating\": {\"type\": \"float\"},\n      \"in_stock\": {\"type\": \"boolean\"}\n    }\n  }\n}\n```\n\n## Search Features\n\n### Full-Text Search\n```\nGET /products_v1/_search\n{\n  \"query\": {\n    \"multi_match\": {\n      \"query\": \"wireless headphones\",\n      \"fields\": [\"name^3\", \"description\"]\n    }\n  }\n}\n```\n\n### Filters\n- Price range\n- Category\n- Brand\n- Rating (4+ stars)\n- Availability\n\n### Auto-Complete\nSuggest-as-you-type using completion suggester.\n\n### Fuzzy Matching\nHandle typos with fuzziness=AUTO.\n\n### Synonym Support\nphone → smartphone, mobile\nlaptop → notebook, computer\n\n## Relevance Tuning\nField boosting:\n- name: 3x\n- description: 1x\n- tags: 2x\n\n## Performance\n- Query latency: <100ms (p95)\n- Index size: 50GB\n- Doc count: 1M products\n- Refresh interval: 1s\n\n## Monitoring\n- Query rate\n- Latency percentiles\n- Index health\n- Disk usage\n\n## Data Sync\n- Real-time via Kafka\n- Bulk reindex nightly\n- Delta updates every 5 minutes",
+    "linked_jira_issues": [
+      "SRCH-001"
+    ],
+    "linked_test_cases": [
+      "TC-SRCH-001"
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "INV-004",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "To Do",
+    "module": "Inventory",
+    "title": "Multi-Warehouse Inventory Management",
+    "description": "As a operations manager, I want to track inventory across multiple warehouses so that I can optimize fulfillment.",
+    "acceptance_criteria": [
+      "System displays inventory by warehouse location",
+      "Orders are automatically routed to nearest warehouse with stock",
+      "Inter-warehouse transfers can be initiated",
+      "Dashboard shows inventory distribution across locations"
+    ],
+    "story_points": 13,
+    "epic": "Multi-Location Support",
+    "sprint": "Sprint 25",
+    "assignee": "Michelle Park",
+    "labels": [
+      "inventory",
+      "multi-warehouse",
+      "complex"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "INV-001"
+      ],
+      "tested_by": [
+        "TC-INV-005"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "INV-001"
+      ]
+    }
+  }
+]

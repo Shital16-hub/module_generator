@@ -1,0 +1,42 @@
+[
+  {
+    "test_id": "TC-AUTH-002",
+    "title": "Verify User Login",
+    "objective": "Verify existing user can login",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Authentication",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "5 minutes",
+    "linked_stories": [
+      "AUTH-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User account exists and is verified"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to login page",
+        "expected_result": "Login form displayed"
+      },
+      {
+        "step_number": 2,
+        "action": "Enter email and password",
+        "expected_result": "Credentials accepted"
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Login'",
+        "expected_result": "Redirect to dashboard"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify user is logged in",
+        "expected_result": "User name displayed"
+      }
+    ]
+  }
+]

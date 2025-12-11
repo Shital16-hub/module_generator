@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "PAY-004",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "To Do",
+    "module": "Payment",
+    "title": "Payment Method Management",
+    "description": "As a customer, I want to save multiple payment methods so that I can choose different cards for different purchases.",
+    "acceptance_criteria": [
+      "User can add multiple credit/debit cards",
+      "User can set a default payment method",
+      "User can delete saved payment methods",
+      "Card details are securely tokenized",
+      "User can edit billing address for each card"
+    ],
+    "story_points": 5,
+    "epic": "Account Management",
+    "sprint": "Sprint 25",
+    "assignee": "David Lee",
+    "labels": [
+      "payment",
+      "account",
+      "security"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001"
+      ],
+      "tested_by": [
+        "TC-PAY-006"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "PAY-001"
+      ]
+    }
+  }
+]

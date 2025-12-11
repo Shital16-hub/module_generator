@@ -1,0 +1,21 @@
+[
+  {
+    "doc_id": "CONF-SRCH-002",
+    "space": "Product",
+    "title": "Search Best Practices for Users",
+    "page_url": "https://confluence.company.com/display/PROD/Search+Best+Practices",
+    "module": "Search",
+    "type": "user_guide",
+    "labels": [
+      "search",
+      "user-guide",
+      "tips"
+    ],
+    "content": "# Product Search - User Guide\n\n## How to Search\n\n### Basic Search\nType keywords in search bar:\n- Product names: \"wireless mouse\"\n- Brands: \"Apple AirPods\"\n- Categories: \"running shoes\"\n- Features: \"noise cancelling\"\n\n### Advanced Search Tips\n\n**Use Specific Terms**\n❌ \"thing for computer\"\n✅ \"wireless keyboard\"\n\n**Multiple Keywords**\nCombine terms: \"laptop 15 inch SSD\"\n\n**Exact Phrases**\nUse quotes: \"iPhone 15 Pro Max\"\n\n## Filters\n\n### Price Range\nSet min/max price to narrow results\n\n### Category\nBrowse by department or category\n\n### Brand\nFilter by manufacturer\n\n### Customer Ratings\nShow only 4+ star products\n\n### Availability\n\"In Stock Only\" option\n\n## Sorting Options\n- **Relevance** (default): Best matches first\n- **Price: Low to High**\n- **Price: High to Low**\n- **Customer Rating**\n- **Newest Arrivals**\n\n## Search Suggestions\nAs you type, see:\n- Popular searches\n- Product suggestions\n- Category suggestions\n\n## Handling No Results\nIf no results found:\n- Check spelling\n- Use fewer keywords\n- Try broader terms\n- Browse by category\n\n## Saved Searches\nSave frequent searches:\n1. Perform search\n2. Click \"Save Search\"\n3. Access from \"My Searches\"\n4. Get alerts for new matches",
+    "linked_jira_issues": [
+      "SRCH-001",
+      "SRCH-002"
+    ],
+    "linked_test_cases": []
+  }
+]

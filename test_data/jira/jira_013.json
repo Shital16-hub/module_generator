@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "AUTH-001",
+    "type": "User Story",
+    "priority": "Critical",
+    "status": "Done",
+    "module": "Authentication",
+    "title": "User Registration and Login",
+    "description": "As a new customer, I want to create an account so that I can save my information and track my orders.",
+    "acceptance_criteria": [
+      "Registration form collects: email, password, name",
+      "Password must meet security requirements (8+ chars, uppercase, number)",
+      "Email verification link sent upon registration",
+      "User can login with email and password",
+      "Remember me option keeps user logged in for 30 days"
+    ],
+    "story_points": 8,
+    "epic": "User Authentication",
+    "sprint": "Sprint 20",
+    "assignee": "Sarah Johnson",
+    "labels": [
+      "authentication",
+      "security",
+      "critical"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "AUTH-002",
+        "AUTH-003"
+      ],
+      "tested_by": [
+        "TC-AUTH-001",
+        "TC-AUTH-002"
+      ],
+      "blocks": [],
+      "depends_on": []
+    }
+  }
+]

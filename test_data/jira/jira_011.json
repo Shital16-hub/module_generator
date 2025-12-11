@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "SRCH-002",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "Done",
+    "module": "Search",
+    "title": "Search Result Sorting",
+    "description": "As a customer, I want to sort search results by different criteria so that I can find products that match my preferences.",
+    "acceptance_criteria": [
+      "Sort options: Relevance, Price (low to high), Price (high to low), Rating, Newest",
+      "Sort selection persists during browsing session",
+      "Default sort is by relevance",
+      "Sort updates results without page reload"
+    ],
+    "story_points": 3,
+    "epic": "Product Discovery",
+    "sprint": "Sprint 22",
+    "assignee": "Jessica Wong",
+    "labels": [
+      "search",
+      "sorting",
+      "ux"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "SRCH-001"
+      ],
+      "tested_by": [
+        "TC-SRCH-003"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "SRCH-001"
+      ]
+    }
+  }
+]

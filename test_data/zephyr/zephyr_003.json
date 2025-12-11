@@ -1,0 +1,51 @@
+[
+  {
+    "test_id": "TC-PAY-003",
+    "title": "Verify PayPal Payment Flow",
+    "objective": "Verify PayPal integration works correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Integration",
+    "automation_status": "Manual",
+    "estimated_time": "12 minutes",
+    "linked_stories": [
+      "PAY-002"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-005"
+    ],
+    "preconditions": [
+      "User is logged in",
+      "User has PayPal account",
+      "Items in cart"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Select PayPal at checkout",
+        "expected_result": "PayPal button visible"
+      },
+      {
+        "step_number": 2,
+        "action": "Click PayPal button",
+        "expected_result": "Redirect to PayPal"
+      },
+      {
+        "step_number": 3,
+        "action": "Login to PayPal",
+        "expected_result": "Authentication successful"
+      },
+      {
+        "step_number": 4,
+        "action": "Authorize payment",
+        "expected_result": "Redirect back to site"
+      },
+      {
+        "step_number": 5,
+        "action": "Verify order confirmation",
+        "expected_result": "Order completed"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "ORD-001",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Order Management",
+    "title": "Order History and Tracking",
+    "description": "As a customer, I want to view my order history and track current orders so that I can monitor my purchases.",
+    "acceptance_criteria": [
+      "User can access order history from account dashboard",
+      "Orders display: order number, date, status, total",
+      "User can click on order for detailed information",
+      "Active orders display real-time tracking information",
+      "User can download order invoice as PDF"
+    ],
+    "story_points": 5,
+    "epic": "Customer Experience",
+    "sprint": "Sprint 22",
+    "assignee": "Amanda Lee",
+    "labels": [
+      "orders",
+      "tracking",
+      "customer-experience"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-002"
+      ],
+      "tested_by": [
+        "TC-ORD-001",
+        "TC-ORD-002"
+      ],
+      "blocks": [],
+      "depends_on": []
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "story_id": "PAY-005",
+    "type": "User Story",
+    "priority": "High",
+    "status": "In Testing",
+    "module": "Payment",
+    "title": "Automated Refund Processing",
+    "description": "As a customer service representative, I want to process refunds quickly so that customers receive their money back promptly.",
+    "acceptance_criteria": [
+      "CS rep can initiate refund from order details page",
+      "System supports full and partial refunds",
+      "Refund is processed through original payment method",
+      "Customer receives email notification of refund",
+      "Refund status is tracked and visible"
+    ],
+    "story_points": 8,
+    "epic": "Customer Support Tools",
+    "sprint": "Sprint 24",
+    "assignee": "Emma Wilson",
+    "labels": [
+      "payment",
+      "refunds",
+      "customer-service"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001",
+        "PAY-002"
+      ],
+      "tested_by": [
+        "TC-PAY-007",
+        "TC-PAY-008"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "PAY-001"
+      ]
+    }
+  }
+]

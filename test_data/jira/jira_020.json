@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "REP-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Reporting",
+    "title": "Sales Analytics Dashboard",
+    "description": "As a sales manager, I want to view real-time sales analytics so that I can make data-driven decisions.",
+    "acceptance_criteria": [
+      "Dashboard displays: total sales, orders, average order value",
+      "Data can be filtered by date range, product category",
+      "Charts show trends: daily sales, top products",
+      "Dashboard updates in real-time",
+      "User can export reports as PDF or Excel"
+    ],
+    "story_points": 13,
+    "epic": "Business Intelligence",
+    "sprint": "Sprint 24",
+    "assignee": "Kevin Wang",
+    "labels": [
+      "reporting",
+      "analytics",
+      "dashboard"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001"
+      ],
+      "tested_by": [
+        "TC-REP-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "ORD-001"
+      ]
+    }
+  }
+]

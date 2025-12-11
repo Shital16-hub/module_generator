@@ -1,0 +1,42 @@
+[
+  {
+    "test_id": "TC-ORD-002",
+    "title": "Verify Order Cancellation",
+    "objective": "Verify user can cancel pending orders",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Order Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "ORD-002"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Order in PENDING or CONFIRMED status"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to order details",
+        "expected_result": "Cancel button visible"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Cancel Order'",
+        "expected_result": "Confirmation dialog"
+      },
+      {
+        "step_number": 3,
+        "action": "Confirm cancellation",
+        "expected_result": "Order cancelled"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify refund initiated",
+        "expected_result": "Refund status shown"
+      }
+    ]
+  }
+]

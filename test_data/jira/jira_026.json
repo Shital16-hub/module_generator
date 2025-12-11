@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "RET-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "To Do",
+    "module": "Returns",
+    "title": "Return Request Initiation",
+    "description": "As a customer, I want to initiate a return for my order so that I can send back unwanted items.",
+    "acceptance_criteria": [
+      "Return request available within 30 days of delivery",
+      "User selects items to return and provides reason",
+      "System generates return authorization number",
+      "Return shipping label provided (if eligible)",
+      "Refund processed after warehouse receives return"
+    ],
+    "story_points": 8,
+    "epic": "Customer Service",
+    "sprint": "Sprint 25",
+    "assignee": "Tyler Brooks",
+    "labels": [
+      "returns",
+      "customer-service",
+      "refunds"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001",
+        "PAY-005"
+      ],
+      "tested_by": [
+        "TC-RET-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "ORD-001"
+      ]
+    }
+  }
+]

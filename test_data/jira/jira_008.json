@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "INV-003",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Inventory",
+    "title": "Bulk Inventory Import",
+    "description": "As a warehouse staff, I want to import inventory updates via CSV so that I can update multiple products at once.",
+    "acceptance_criteria": [
+      "System accepts CSV file upload with standard format",
+      "Validation checks for data integrity before import",
+      "Import process shows progress indicator",
+      "System generates report of successful and failed updates",
+      "Rollback option available if errors detected"
+    ],
+    "story_points": 8,
+    "epic": "Warehouse Tools",
+    "sprint": "Sprint 23",
+    "assignee": "Tom Anderson",
+    "labels": [
+      "inventory",
+      "import",
+      "bulk-operations"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "INV-001",
+        "INV-002"
+      ],
+      "tested_by": [
+        "TC-INV-004"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "INV-001"
+      ]
+    }
+  }
+]

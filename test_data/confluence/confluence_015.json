@@ -1,0 +1,20 @@
+[
+  {
+    "doc_id": "CONF-USR-002",
+    "space": "Product",
+    "title": "Managing Your Account",
+    "page_url": "https://confluence.company.com/display/PROD/Account+Management",
+    "module": "User Management",
+    "type": "user_guide",
+    "labels": [
+      "user-management",
+      "account",
+      "guide"
+    ],
+    "content": "# Managing Your Account\n\n## Updating Profile Information\n\n### Change Name\n1. Go to Account Settings\n2. Click \"Edit Profile\"\n3. Update name\n4. Click \"Save\"\n\n### Change Email\n1. Account Settings > Email\n2. Enter new email\n3. Verify via email link\n4. Confirm change\n\n### Update Phone\n1. Account Settings > Phone\n2. Enter new number\n3. Verify via SMS code\n\n### Profile Picture\n- Click current picture\n- Upload new (JPG, PNG)\n- Max size: 5MB\n- Recommended: 400x400px\n\n## Managing Addresses\n\n### Add Address\n1. Account > Addresses\n2. Click \"Add Address\"\n3. Fill in details\n4. Mark as default (optional)\n5. Save\n\n### Edit Address\n- Click pencil icon\n- Update fields\n- Save changes\n\n### Delete Address\n- Click trash icon\n- Confirm deletion\n- (Cannot delete default)\n\n### Set Default\n- Click \"Make Default\"\n- Used for quick checkout\n\n## Communication Preferences\n\n### Email Settings\n- Order updates: Always on\n- Marketing: Optional\n- Recommendations: Optional\n- Newsletter: Optional\n\n### SMS Notifications\n- Shipping updates\n- Delivery notifications\n- Account alerts\n\n### Push Notifications\n- Mobile app only\n- Order status\n- Special offers\n\n## Privacy Settings\n\n### Data Sharing\n- Control profile visibility\n- Manage cookie preferences\n- Marketing opt-out\n\n### Download Your Data\n1. Privacy Settings\n2. \"Download My Data\"\n3. Receive link via email\n4. Valid for 48 hours\n\n### Delete Account\n1. Account Settings > Privacy\n2. \"Delete Account\"\n3. Enter password\n4. Confirm deletion\n5. 30-day grace period\n\n## Frequently Asked Questions\nQ: Can I have multiple email addresses?\nA: No, one email per account.\n\nQ: How do I merge accounts?\nA: Contact customer support.",
+    "linked_jira_issues": [
+      "USR-001"
+    ],
+    "linked_test_cases": []
+  }
+]

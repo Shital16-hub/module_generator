@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "PAY-002",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Payment",
+    "title": "PayPal Payment Integration",
+    "description": "As a customer, I want to pay using PayPal so that I can use my existing PayPal balance without entering card details.",
+    "acceptance_criteria": [
+      "PayPal option is displayed at checkout",
+      "User is redirected to PayPal for authentication",
+      "System handles PayPal callbacks correctly",
+      "Payment status is updated in real-time"
+    ],
+    "story_points": 5,
+    "epic": "E-commerce Checkout",
+    "sprint": "Sprint 23",
+    "assignee": "Mike Chen",
+    "labels": [
+      "payment",
+      "paypal",
+      "integration"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001",
+        "PAY-003"
+      ],
+      "tested_by": [
+        "TC-PAY-003",
+        "TC-PAY-004"
+      ],
+      "blocks": [],
+      "depends_on": []
+    }
+  }
+]

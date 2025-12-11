@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "REV-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Reviews",
+    "title": "Product Reviews and Ratings",
+    "description": "As a customer, I want to read and write product reviews so that I can make informed decisions.",
+    "acceptance_criteria": [
+      "Customers can rate products 1-5 stars",
+      "Customers can write text reviews",
+      "Reviews display on product pages",
+      "Only verified purchasers can leave reviews",
+      "Reviews can be marked as helpful by other users"
+    ],
+    "story_points": 8,
+    "epic": "Social Commerce",
+    "sprint": "Sprint 24",
+    "assignee": "Oliver James",
+    "labels": [
+      "reviews",
+      "ratings",
+      "ugc"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001"
+      ],
+      "tested_by": [
+        "TC-REV-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "ORD-001"
+      ]
+    }
+  }
+]

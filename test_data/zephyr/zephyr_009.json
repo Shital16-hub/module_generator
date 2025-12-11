@@ -1,0 +1,44 @@
+[
+  {
+    "test_id": "TC-SRCH-001",
+    "title": "Verify Product Search with Filters",
+    "objective": "Verify search returns relevant results and filters work",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Search",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "12 minutes",
+    "linked_stories": [
+      "SRCH-001"
+    ],
+    "linked_requirements": [
+      "REQ-SRCH-001"
+    ],
+    "preconditions": [
+      "Product catalog populated"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Enter 'headphones' in search",
+        "expected_result": "Results displayed"
+      },
+      {
+        "step_number": 2,
+        "action": "Apply price filter: $50-$200",
+        "expected_result": "Results filtered"
+      },
+      {
+        "step_number": 3,
+        "action": "Apply category: Wireless",
+        "expected_result": "Further filtered"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify results relevance",
+        "expected_result": "All results match criteria"
+      }
+    ]
+  }
+]

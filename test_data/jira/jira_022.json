@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "SHIP-001",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Shipping",
+    "title": "Shipping Method Selection",
+    "description": "As a customer, I want to choose my shipping method so that I can balance cost and delivery speed.",
+    "acceptance_criteria": [
+      "Display available shipping options: Standard, Express, Overnight",
+      "Show estimated delivery date for each option",
+      "Calculate shipping cost based on cart weight and destination",
+      "Free shipping promotion applies automatically when eligible",
+      "International shipping available for select countries"
+    ],
+    "story_points": 8,
+    "epic": "Fulfillment",
+    "sprint": "Sprint 22",
+    "assignee": "Marcus Hill",
+    "labels": [
+      "shipping",
+      "logistics",
+      "fulfillment"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001",
+        "CART-001"
+      ],
+      "tested_by": [
+        "TC-SHIP-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "CART-001"
+      ]
+    }
+  }
+]

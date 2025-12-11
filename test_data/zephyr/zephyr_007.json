@@ -1,0 +1,40 @@
+[
+  {
+    "test_id": "TC-INV-002",
+    "title": "Verify Low Stock Alert Triggering",
+    "objective": "Verify alert is sent when stock falls below threshold",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Inventory",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "12 minutes",
+    "linked_stories": [
+      "INV-002"
+    ],
+    "linked_requirements": [
+      "REQ-INV-005"
+    ],
+    "preconditions": [
+      "Product threshold set to 10 units",
+      "Current stock is 11 units"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Process order for 2 units",
+        "expected_result": "Stock now 9"
+      },
+      {
+        "step_number": 2,
+        "action": "Check email inbox",
+        "expected_result": "Low stock alert received"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify alert content",
+        "expected_result": "Correct product and quantity"
+      }
+    ]
+  }
+]

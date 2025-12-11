@@ -1,0 +1,49 @@
+[
+  {
+    "test_id": "TC-AUTH-001",
+    "title": "Verify User Registration",
+    "objective": "Verify new user can register successfully",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Authentication",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "AUTH-001"
+    ],
+    "linked_requirements": [
+      "REQ-AUTH-001"
+    ],
+    "preconditions": [
+      "User does not exist in system"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Click 'Sign Up'",
+        "expected_result": "Registration form opens"
+      },
+      {
+        "step_number": 2,
+        "action": "Enter email, password, name",
+        "expected_result": "Fields validated"
+      },
+      {
+        "step_number": 3,
+        "action": "Submit form",
+        "expected_result": "Success message"
+      },
+      {
+        "step_number": 4,
+        "action": "Check email",
+        "expected_result": "Verification email received"
+      },
+      {
+        "step_number": 5,
+        "action": "Click verification link",
+        "expected_result": "Account activated"
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "doc_id": "CONF-INV-002",
+    "space": "Operations",
+    "title": "Warehouse Operations Manual",
+    "page_url": "https://confluence.company.com/display/OPS/Warehouse+Manual",
+    "module": "Inventory",
+    "type": "operational_guide",
+    "labels": [
+      "inventory",
+      "warehouse",
+      "operations"
+    ],
+    "content": "# Warehouse Operations Manual\n\n## Daily Procedures\n\n### Morning Checklist\n1. Review overnight orders\n2. Check low-stock alerts\n3. Verify expected deliveries\n4. Print pick lists for day\n5. Inspect equipment\n\n### Receiving Process\n1. Scan incoming shipment barcode\n2. Count physical items\n3. Compare to packing slip\n4. Report discrepancies\n5. Update inventory system\n6. Put away to assigned locations\n\n### Picking Process\n1. Receive pick list from system\n2. Navigate to bin locations\n3. Scan product barcodes\n4. Verify quantity\n5. Place in tote/box\n6. Mark as picked in system\n\n### Packing Process\n1. Verify all items present\n2. Select appropriate box size\n3. Add packing materials\n4. Include packing slip\n5. Seal and weigh\n6. Print shipping label\n7. Move to shipping zone\n\n### Shipping Process\n1. Scan package for shipping\n2. Verify carrier and service level\n3. Place on correct pallet/cart\n4. Await carrier pickup\n5. Scan out on collection\n\n## Inventory Accuracy\n- Cycle counting daily\n- Full inventory audit quarterly\n- 99.5% accuracy target\n\n## Safety Procedures\n- Proper lifting techniques\n- Equipment inspections\n- Emergency procedures\n- PPE requirements\n\n## System Access\n- Warehouse Management System (WMS)\n- Handheld scanners\n- Desktop terminals\n- Mobile app",
+    "linked_jira_issues": [
+      "INV-001",
+      "INV-003"
+    ],
+    "linked_test_cases": [
+      "TC-INV-002"
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "test_id": "TC-SHIP-001",
+    "title": "Verify Shipping Method Selection",
+    "objective": "Verify shipping options display and calculate correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Shipping",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "SHIP-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "Items in cart",
+      "At checkout"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "View shipping options",
+        "expected_result": "3 options displayed"
+      },
+      {
+        "step_number": 2,
+        "action": "Select Standard ($5.99)",
+        "expected_result": "Total updates"
+      },
+      {
+        "step_number": 3,
+        "action": "Select Express ($12.99)",
+        "expected_result": "Total updates"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify delivery estimates",
+        "expected_result": "Dates shown"
+      }
+    ]
+  }
+]

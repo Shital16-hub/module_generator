@@ -1,0 +1,40 @@
+[
+  {
+    "story_id": "ORD-002",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "In Progress",
+    "module": "Order Management",
+    "title": "Order Cancellation",
+    "description": "As a customer, I want to cancel my order before it ships so that I can change my mind.",
+    "acceptance_criteria": [
+      "Cancel button available for orders in 'Pending' or 'Confirmed' status",
+      "User must confirm cancellation",
+      "Refund is automatically processed to original payment method",
+      "User receives cancellation confirmation email",
+      "Inventory is released back to stock"
+    ],
+    "story_points": 8,
+    "epic": "Order Flexibility",
+    "sprint": "Sprint 23",
+    "assignee": "Daniel Kim",
+    "labels": [
+      "orders",
+      "cancellation",
+      "refunds"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "ORD-001",
+        "PAY-005"
+      ],
+      "tested_by": [
+        "TC-ORD-003"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "ORD-001"
+      ]
+    }
+  }
+]

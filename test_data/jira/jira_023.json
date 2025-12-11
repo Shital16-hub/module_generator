@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "WISH-001",
+    "type": "User Story",
+    "priority": "Low",
+    "status": "To Do",
+    "module": "Wishlist",
+    "title": "Product Wishlist",
+    "description": "As a customer, I want to save products to a wishlist so that I can purchase them later.",
+    "acceptance_criteria": [
+      "Heart icon on product pages to add to wishlist",
+      "Wishlist accessible from user account",
+      "User can move items from wishlist to cart",
+      "Email notification when wishlisted item goes on sale",
+      "Share wishlist with friends/family"
+    ],
+    "story_points": 5,
+    "epic": "Shopping Experience",
+    "sprint": "Sprint 25",
+    "assignee": "Nina Patel",
+    "labels": [
+      "wishlist",
+      "features",
+      "engagement"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "CART-001"
+      ],
+      "tested_by": [
+        "TC-WISH-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "AUTH-001"
+      ]
+    }
+  }
+]

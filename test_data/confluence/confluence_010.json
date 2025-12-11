@@ -1,0 +1,24 @@
+[
+  {
+    "doc_id": "CONF-AUTH-001",
+    "space": "Engineering",
+    "title": "Authentication System Architecture",
+    "page_url": "https://confluence.company.com/display/ENG/Auth+System",
+    "module": "Authentication",
+    "type": "technical_documentation",
+    "labels": [
+      "authentication",
+      "security",
+      "architecture"
+    ],
+    "content": "# Authentication System Architecture\n\n## Overview\nJWT-based authentication with OAuth2 support.\n\n## Components\n\n### 1. Auth Service\n- User registration\n- Login/logout\n- Token generation\n- Password reset\n- MFA management\n\n### 2. Token Strategy\n**Access Token:**\n- Type: JWT\n- Expiry: 1 hour\n- Contains: user_id, email, roles\n- Signed with RS256\n\n**Refresh Token:**\n- Type: Opaque token\n- Expiry: 30 days\n- Stored in database\n- Used to get new access token\n\n### 3. Session Management\n- Stateless via JWT\n- Refresh token in httpOnly cookie\n- CSRF protection enabled\n\n## Security Measures\n\n### Password Storage\n- bcrypt with cost factor 12\n- Salt automatically generated\n- Password history (last 5)\n\n### Account Lockout\n- 5 failed attempts\n- 30-minute lockout\n- Email notification\n- Admin unlock available\n\n### MFA Support\n- TOTP (Time-based OTP)\n- SMS (via Twilio)\n- Email (backup method)\n- Recovery codes (10 single-use)\n\n## OAuth2 Integration\n**Supported Providers:**\n- Google\n- Facebook\n- Apple\n\n**Flow:**\n1. User clicks \"Sign in with Google\"\n2. Redirect to Google authorization\n3. User grants permission\n4. Google returns authorization code\n5. Exchange code for access token\n6. Retrieve user profile\n7. Create or link account\n8. Generate our JWT tokens\n\n## API Endpoints\n\n### Register\nPOST /api/v1/auth/register\n```json\n{\n  \"email\": \"user@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"name\": \"John Doe\"\n}\n```\n\n### Login\nPOST /api/v1/auth/login\n```json\n{\n  \"email\": \"user@example.com\",\n  \"password\": \"SecurePass123!\"\n}\n```\n\nResponse:\n```json\n{\n  \"access_token\": \"eyJ...\",\n  \"refresh_token\": \"abc...\",\n  \"user\": {...}\n}\n```\n\n### Enable MFA\nPOST /api/v1/auth/mfa/enable\nHeaders: Authorization: Bearer {token}\n\nResponse:\n```json\n{\n  \"secret\": \"JBSWY3DPEHPK3PXP\",\n  \"qr_code\": \"data:image/png...\",\n  \"backup_codes\": [\"12345678\", ...]\n}\n```\n\n## Security Headers\n```\nStrict-Transport-Security: max-age=31536000\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY\nX-XSS-Protection: 1; mode=block\nContent-Security-Policy: default-src 'self'\n```\n\n## Monitoring\n- Failed login attempts\n- Account lockouts\n- Token refresh rate\n- MFA adoption rate\n\n## Compliance\n- GDPR compliant\n- CCPA compliant\n- SOC 2 Type II certified",
+    "linked_jira_issues": [
+      "AUTH-001",
+      "AUTH-002"
+    ],
+    "linked_test_cases": [
+      "TC-AUTH-001",
+      "TC-AUTH-003"
+    ]
+  }
+]

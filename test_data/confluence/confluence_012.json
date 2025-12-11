@@ -1,0 +1,23 @@
+[
+  {
+    "doc_id": "CONF-ORD-001",
+    "space": "Engineering",
+    "title": "Order Management System Design",
+    "page_url": "https://confluence.company.com/display/ENG/Order+Management",
+    "module": "Order Management",
+    "type": "technical_documentation",
+    "labels": [
+      "orders",
+      "system-design",
+      "architecture"
+    ],
+    "content": "# Order Management System Design\n\n## Order Lifecycle\n\n### States\nPENDING → CONFIRMED → PROCESSING → SHIPPED → DELIVERED → COMPLETED\n\n### State Transitions\n- PENDING: Payment initiated\n- CONFIRMED: Payment successful\n- PROCESSING: Warehouse fulfilling\n- SHIPPED: Package with carrier\n- DELIVERED: Customer received\n- COMPLETED: Return window closed\n\nAlternative paths:\n- CANCELLED: Any time before SHIPPED\n- RETURNED: After DELIVERED\n\n## Database Schema\n```sql\nCREATE TABLE orders (\n  order_id VARCHAR(50) PRIMARY KEY,\n  customer_id VARCHAR(50),\n  status VARCHAR(20),\n  total_amount DECIMAL(10,2),\n  created_at TIMESTAMP,\n  updated_at TIMESTAMP\n);\n\nCREATE TABLE order_items (\n  item_id SERIAL PRIMARY KEY,\n  order_id VARCHAR(50),\n  product_id VARCHAR(50),\n  quantity INT,\n  price DECIMAL(10,2)\n);\n```\n\n## Event-Driven Architecture\nEvents published to Kafka:\n- order.created\n- order.confirmed\n- order.shipped\n- order.delivered\n- order.cancelled\n\nSubscribers:\n- Email service\n- Analytics\n- Inventory service\n- Shipping service\n\n## Business Rules\n- Free shipping over $50\n- Tax calculated based on shipping address\n- Inventory reserved for 15 minutes\n- Orders can be cancelled before PROCESSING\n- Refunds processed within 5-7 days\n\n## API Endpoints\nGET /api/v1/orders/{order_id}\nPOST /api/v1/orders\nPUT /api/v1/orders/{order_id}/cancel\nGET /api/v1/orders?customer_id={id}\n\n## Performance\n- 99.9% uptime\n- <200ms order creation\n- Handle 1000 orders/minute peak\n- Database sharded by customer_id",
+    "linked_jira_issues": [
+      "ORD-001",
+      "ORD-002"
+    ],
+    "linked_test_cases": [
+      "TC-ORD-001"
+    ]
+  }
+]

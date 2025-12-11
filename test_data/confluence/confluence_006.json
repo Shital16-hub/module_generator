@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-INV-003",
+    "space": "Product",
+    "title": "Low Stock Alerts Configuration",
+    "page_url": "https://confluence.company.com/display/PROD/Low+Stock+Alerts",
+    "module": "Inventory",
+    "type": "configuration_guide",
+    "labels": [
+      "inventory",
+      "alerts",
+      "configuration"
+    ],
+    "content": "# Low Stock Alerts Configuration\n\n## Overview\nAutomated alerts when inventory falls below threshold.\n\n## Configuration\n\n### Per-Product Thresholds\nSet individual thresholds based on:\n- Average daily sales\n- Lead time for reorder\n- Safety stock buffer\n\n### Alert Recipients\n- Inventory Manager (all alerts)\n- Category Managers (category-specific)\n- Warehouse Manager (location-specific)\n\n### Alert Channels\n1. Email (immediate)\n2. Slack (real-time)\n3. Dashboard notification\n4. SMS (critical items only)\n\n## Alert Rules\n\n### Priority Levels\n**Critical** (< 10 units):\n- Immediate email + SMS\n- Automatic reorder trigger\n- Daily status updates\n\n**Warning** (< 30 units):\n- Email notification\n- Dashboard alert\n- Review for reorder\n\n**Info** (< 50 units):\n- Dashboard notification only\n\n## Reorder Logic\n```\nreorder_point = (avg_daily_sales * lead_time_days) + safety_stock\nreorder_quantity = economic_order_quantity (EOQ)\n```\n\n## Automated Reordering\n- Enabled for high-velocity items\n- Requires supplier integration\n- Purchase orders generated automatically\n- Approval workflow for large orders\n\n## Reporting\n- Daily low-stock report\n- Weekly reorder summary\n- Monthly trend analysis\n\n## Adjusting Thresholds\nNavigate to: Inventory > Settings > Alert Thresholds\n1. Select product or category\n2. Set threshold quantity\n3. Choose alert recipients\n4. Save configuration",
+    "linked_jira_issues": [
+      "INV-002"
+    ],
+    "linked_test_cases": [
+      "TC-INV-003"
+    ]
+  }
+]

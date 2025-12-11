@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-USR-001",
+    "space": "Engineering",
+    "title": "User Profile Management System",
+    "page_url": "https://confluence.company.com/display/ENG/User+Profiles",
+    "module": "User Management",
+    "type": "technical_documentation",
+    "labels": [
+      "user-management",
+      "profiles",
+      "system-design"
+    ],
+    "content": "# User Profile Management System\n\n## Database Schema\n```sql\nCREATE TABLE users (\n  user_id VARCHAR(50) PRIMARY KEY,\n  email VARCHAR(255) UNIQUE,\n  name VARCHAR(255),\n  phone VARCHAR(20),\n  created_at TIMESTAMP,\n  last_login TIMESTAMP\n);\n\nCREATE TABLE addresses (\n  address_id SERIAL PRIMARY KEY,\n  user_id VARCHAR(50),\n  type VARCHAR(20), -- 'shipping' or 'billing'\n  is_default BOOLEAN,\n  street VARCHAR(255),\n  city VARCHAR(100),\n  state VARCHAR(50),\n  zip VARCHAR(20),\n  country VARCHAR(50)\n);\n```\n\n## Features\n\n### Profile Information\n- Name, email, phone\n- Profile picture (S3 storage)\n- Preferences\n- Communication settings\n\n### Address Management\n- Multiple addresses per user\n- Default shipping/billing\n- Address validation via API\n- Geocoding for delivery estimates\n\n### Preferences\n- Language\n- Currency\n- Timezone\n- Newsletter opt-in\n- Marketing preferences\n\n## API Endpoints\nGET /api/v1/users/{user_id}\nPUT /api/v1/users/{user_id}\nGET /api/v1/users/{user_id}/addresses\nPOST /api/v1/users/{user_id}/addresses\n\n## Validation\n- Email format check\n- Phone number validation\n- Address verification via USPS\n- Image size limit: 5MB\n\n## Privacy\n- GDPR: Right to be forgotten\n- Data export on request\n- Audit log of changes\n- Encrypted sensitive fields",
+    "linked_jira_issues": [
+      "USR-001"
+    ],
+    "linked_test_cases": [
+      "TC-USR-001"
+    ]
+  }
+]

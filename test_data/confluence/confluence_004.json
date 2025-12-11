@@ -1,0 +1,23 @@
+[
+  {
+    "doc_id": "CONF-INV-001",
+    "space": "Engineering",
+    "title": "Inventory Management System Architecture",
+    "page_url": "https://confluence.company.com/display/ENG/Inventory+Architecture",
+    "module": "Inventory",
+    "type": "technical_documentation",
+    "labels": [
+      "inventory",
+      "architecture",
+      "system-design"
+    ],
+    "content": "# Inventory Management System Architecture\n\n## System Overview\nReal-time inventory tracking across multiple warehouses with automatic reorder triggers.\n\n## Components\n\n### 1. Inventory Service\n- REST API for inventory operations\n- Real-time stock level updates\n- Multi-warehouse support\n- Reservation system (soft locks)\n\n### 2. Database Schema\n```sql\nCREATE TABLE inventory (\n  product_id VARCHAR(50) PRIMARY KEY,\n  warehouse_id VARCHAR(50),\n  quantity INT NOT NULL,\n  reserved_quantity INT DEFAULT 0,\n  available_quantity AS (quantity - reserved_quantity),\n  reorder_threshold INT,\n  reorder_quantity INT,\n  last_updated TIMESTAMP\n);\n```\n\n### 3. Event System\n- Kafka topics for inventory events\n- Real-time propagation to all services\n- Event sourcing for audit trail\n\n### 4. Reservation Logic\n```python\ndef reserve_inventory(product_id, quantity):\n  # Soft lock for 15 minutes during checkout\n  # Hard lock on order confirmation\n  # Release on cancellation or timeout\n```\n\n## Real-Time Updates\n- WebSocket connections for dashboard\n- Server-Sent Events for notifications\n- Cache invalidation on changes\n\n## Multi-Warehouse Logic\nOrder routing priority:\n1. Nearest warehouse with stock\n2. Warehouse with most stock\n3. Split shipment if needed\n\n## Performance\n- 99.99% uptime SLA\n- <100ms query response time\n- Handles 10,000 concurrent updates\n\n## Monitoring\n- Prometheus metrics\n- Grafana dashboards\n- PagerDuty alerts for stock-outs\n\n## API Endpoints\nGET /api/v1/inventory/{product_id}\nPUT /api/v1/inventory/{product_id}/reserve\nPOST /api/v1/inventory/bulk-update",
+    "linked_jira_issues": [
+      "INV-001",
+      "INV-004"
+    ],
+    "linked_test_cases": [
+      "TC-INV-001"
+    ]
+  }
+]

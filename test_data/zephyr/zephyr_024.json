@@ -1,0 +1,48 @@
+[
+  {
+    "test_id": "TC-REV-001",
+    "title": "Verify Product Review Submission",
+    "objective": "Verify customers can submit product reviews",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "Reviews",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "10 minutes",
+    "linked_stories": [
+      "REV-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User purchased product",
+      "No review submitted yet"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to product page",
+        "expected_result": "Reviews section visible"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Write Review'",
+        "expected_result": "Review form opens"
+      },
+      {
+        "step_number": 3,
+        "action": "Select 5 stars",
+        "expected_result": "Stars highlighted"
+      },
+      {
+        "step_number": 4,
+        "action": "Enter review text",
+        "expected_result": "Text accepted"
+      },
+      {
+        "step_number": 5,
+        "action": "Submit review",
+        "expected_result": "Review posted"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "doc_id": "CONF-RET-001",
+    "module": "Returns",
+    "title": "Return Processing Workflow",
+    "type": "operational_guide",
+    "space": "Product",
+    "page_url": "https://confluence.company.com/display/DOC/CONF-RET-001",
+    "labels": [
+      "returns",
+      "documentation"
+    ],
+    "content": "# Return Processing Workflow\n\n## Overview\nComprehensive guide for Returns module.\n\n## Key Features\n- Feature 1: Description\n- Feature 2: Description\n- Feature 3: Description\n\n## Implementation Details\nDetailed implementation information for Returns.\n\n## Best Practices\n- Best practice 1\n- Best practice 2\n- Best practice 3\n\n## Examples\nExample code and usage patterns.\n\n## Troubleshooting\nCommon issues and solutions.\n\n## Related Documentation\nLinks to related guides and documentation.",
+    "linked_jira_issues": [],
+    "linked_test_cases": []
+  }
+]

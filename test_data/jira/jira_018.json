@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "USR-001",
+    "type": "User Story",
+    "priority": "Medium",
+    "status": "Done",
+    "module": "User Management",
+    "title": "User Profile Management",
+    "description": "As a registered user, I want to edit my profile information so that my account reflects current details.",
+    "acceptance_criteria": [
+      "User can update: name, email, phone, profile picture",
+      "Email changes require verification",
+      "User can manage multiple shipping addresses",
+      "User can set default shipping and billing addresses",
+      "Changes are validated before saving"
+    ],
+    "story_points": 5,
+    "epic": "Account Management",
+    "sprint": "Sprint 20",
+    "assignee": "Rachel Green",
+    "labels": [
+      "user-management",
+      "profile",
+      "account"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "AUTH-001"
+      ],
+      "tested_by": [
+        "TC-USR-001"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "AUTH-001"
+      ]
+    }
+  }
+]

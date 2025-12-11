@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "CONF-PAY-002",
+    "space": "Engineering",
+    "title": "PCI Compliance Requirements",
+    "page_url": "https://confluence.company.com/display/ENG/PCI+Compliance",
+    "module": "Payment",
+    "type": "compliance_documentation",
+    "labels": [
+      "payment",
+      "security",
+      "compliance"
+    ],
+    "content": "# PCI DSS Compliance Requirements\n\n## PCI DSS v4.0 Requirements\n\n### 1. Network Security\n- Firewalls protect cardholder data\n- No default passwords on systems\n- Network segmentation enforced\n\n### 2. Data Protection\n- Encrypt cardholder data in transit and at rest\n- Never store CVV after authorization\n- Mask PAN when displaying (show only last 4)\n\n### 3. Access Control\n- Role-based access control (RBAC)\n- Multi-factor authentication required\n- Unique IDs for system access\n\n### 4. Monitoring\n- Log all access to cardholder data\n- Regular security monitoring\n- Incident response plan maintained\n\n### 5. Security Testing\n- Quarterly vulnerability scans\n- Annual penetration testing\n- Code review for payment flows\n\n## Tokenization\n- All cards tokenized via payment gateway\n- No raw card data stored in database\n- Tokens used for recurring payments\n\n## Audit Logs\nAll payment transactions logged with:\n- Timestamp\n- User ID\n- Transaction type\n- Amount\n- Success/failure status\n\n## Annual Assessment\n- Self-Assessment Questionnaire (SAQ)\n- Attestation of Compliance (AOC)\n- Third-party security audit",
+    "linked_jira_issues": [
+      "PAY-001"
+    ],
+    "linked_test_cases": [
+      "TC-PAY-002"
+    ]
+  }
+]

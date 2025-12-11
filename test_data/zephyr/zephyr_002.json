@@ -1,0 +1,45 @@
+[
+  {
+    "test_id": "TC-PAY-002",
+    "title": "Verify Payment Failure with Declined Card",
+    "objective": "Verify system properly handles declined credit card",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Negative Testing",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "linked_stories": [
+      "PAY-001"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-003"
+    ],
+    "preconditions": [
+      "User is logged in",
+      "User has items in cart"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Navigate to checkout",
+        "expected_result": "Checkout page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Enter declined card: 4000000000000002",
+        "expected_result": "Card format valid"
+      },
+      {
+        "step_number": 3,
+        "action": "Click 'Place Order'",
+        "expected_result": "Payment declined"
+      },
+      {
+        "step_number": 4,
+        "action": "Verify error message",
+        "expected_result": "Clear error displayed"
+      }
+    ]
+  }
+]

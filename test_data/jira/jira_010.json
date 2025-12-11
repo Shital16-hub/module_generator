@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "SRCH-001",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Search",
+    "title": "Advanced Product Search with Filters",
+    "description": "As a customer, I want to search for products with filters so that I can quickly find items that meet my needs.",
+    "acceptance_criteria": [
+      "Search bar is prominent on all pages",
+      "Auto-complete suggestions appear as user types",
+      "Filters include: price range, category, brand, rating",
+      "Search results update dynamically when filters are applied",
+      "Search performance: results load within 500ms"
+    ],
+    "story_points": 13,
+    "epic": "Product Discovery",
+    "sprint": "Sprint 22",
+    "assignee": "Chris Brown",
+    "labels": [
+      "search",
+      "product-discovery",
+      "performance"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "SRCH-002",
+        "SRCH-003"
+      ],
+      "tested_by": [
+        "TC-SRCH-001",
+        "TC-SRCH-002"
+      ],
+      "blocks": [],
+      "depends_on": []
+    }
+  }
+]

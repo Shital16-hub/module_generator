@@ -1,0 +1,38 @@
+[
+  {
+    "story_id": "CART-001",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Shopping Cart",
+    "title": "Shopping Cart Management",
+    "description": "As a customer, I want to add items to my cart so that I can purchase multiple products together.",
+    "acceptance_criteria": [
+      "User can add products to cart from product page",
+      "Cart displays: product image, name, price, quantity",
+      "User can update quantity or remove items",
+      "Cart shows subtotal and estimated tax",
+      "Cart persists across sessions for logged-in users"
+    ],
+    "story_points": 8,
+    "epic": "Shopping Experience",
+    "sprint": "Sprint 21",
+    "assignee": "Sophie Chen",
+    "labels": [
+      "cart",
+      "shopping",
+      "ux"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-001",
+        "INV-001"
+      ],
+      "tested_by": [
+        "TC-CART-001"
+      ],
+      "blocks": [],
+      "depends_on": []
+    }
+  }
+]

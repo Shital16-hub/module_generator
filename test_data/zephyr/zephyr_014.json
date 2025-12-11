@@ -1,0 +1,51 @@
+[
+  {
+    "test_id": "TC-AUTH-003",
+    "title": "Verify MFA Setup",
+    "objective": "Verify user can enable multi-factor authentication",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Authentication",
+    "test_type": "Functional",
+    "automation_status": "Manual",
+    "estimated_time": "12 minutes",
+    "linked_stories": [
+      "AUTH-002"
+    ],
+    "linked_requirements": [
+      "REQ-SEC-001"
+    ],
+    "preconditions": [
+      "User is logged in",
+      "MFA not yet enabled",
+      "Authenticator app installed"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to Security Settings",
+        "expected_result": "Settings page loads"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Enable MFA'",
+        "expected_result": "QR code displayed"
+      },
+      {
+        "step_number": 3,
+        "action": "Scan QR in authenticator app",
+        "expected_result": "Account added"
+      },
+      {
+        "step_number": 4,
+        "action": "Enter 6-digit code",
+        "expected_result": "Code verified"
+      },
+      {
+        "step_number": 5,
+        "action": "Save backup codes",
+        "expected_result": "MFA enabled"
+      }
+    ]
+  }
+]

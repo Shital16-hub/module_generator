@@ -1,0 +1,56 @@
+[
+  {
+    "test_id": "TC-PAY-005",
+    "title": "Verify Refund Processing",
+    "objective": "Verify CS rep can process refunds correctly",
+    "priority": "High",
+    "status": "Approved",
+    "module": "Payment",
+    "test_type": "Functional",
+    "automation_status": "Semi-Automated",
+    "estimated_time": "15 minutes",
+    "linked_stories": [
+      "PAY-005"
+    ],
+    "linked_requirements": [
+      "REQ-PAY-010"
+    ],
+    "preconditions": [
+      "CS rep is logged in",
+      "Order exists in system",
+      "Order is within refund window"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Search for order",
+        "expected_result": "Order found"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Process Refund'",
+        "expected_result": "Refund dialog opens"
+      },
+      {
+        "step_number": 3,
+        "action": "Select full refund",
+        "expected_result": "Amount auto-filled"
+      },
+      {
+        "step_number": 4,
+        "action": "Enter reason",
+        "expected_result": "Reason saved"
+      },
+      {
+        "step_number": 5,
+        "action": "Confirm refund",
+        "expected_result": "Refund processed"
+      },
+      {
+        "step_number": 6,
+        "action": "Verify email sent",
+        "expected_result": "Customer notified"
+      }
+    ]
+  }
+]

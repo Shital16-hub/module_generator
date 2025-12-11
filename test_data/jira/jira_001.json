@@ -1,0 +1,41 @@
+[
+  {
+    "story_id": "PAY-001",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Payment",
+    "title": "Credit Card Payment Processing",
+    "description": "As a customer, I want to pay for my order using a credit card so that I can complete my purchase securely.",
+    "acceptance_criteria": [
+      "User can enter credit card details (number, expiry, CVV)",
+      "System validates card number using Luhn algorithm",
+      "System processes payment through payment gateway",
+      "User receives confirmation message upon successful payment",
+      "Failed payments display appropriate error messages"
+    ],
+    "story_points": 8,
+    "epic": "E-commerce Checkout",
+    "sprint": "Sprint 23",
+    "assignee": "John Smith",
+    "labels": [
+      "payment",
+      "critical",
+      "pci-compliance"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "PAY-002",
+        "PAY-003"
+      ],
+      "blocks": [
+        "PAY-005"
+      ],
+      "tested_by": [
+        "TC-PAY-001",
+        "TC-PAY-002"
+      ],
+      "depends_on": []
+    }
+  }
+]

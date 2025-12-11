@@ -1,0 +1,39 @@
+[
+  {
+    "story_id": "INV-002",
+    "type": "User Story",
+    "priority": "High",
+    "status": "Done",
+    "module": "Inventory",
+    "title": "Low Stock Alerts",
+    "description": "As a inventory manager, I want to receive alerts when stock is low so that I can reorder in time.",
+    "acceptance_criteria": [
+      "System sends email alert when stock falls below threshold",
+      "Alert includes product name, current quantity, and reorder quantity",
+      "Managers can configure threshold per product",
+      "Dashboard displays all low-stock items"
+    ],
+    "story_points": 5,
+    "epic": "Inventory Monitoring",
+    "sprint": "Sprint 22",
+    "assignee": "Lisa Chen",
+    "labels": [
+      "inventory",
+      "alerts",
+      "monitoring"
+    ],
+    "linked_issues": {
+      "relates_to": [
+        "INV-001",
+        "INV-003"
+      ],
+      "tested_by": [
+        "TC-INV-003"
+      ],
+      "blocks": [],
+      "depends_on": [
+        "INV-001"
+      ]
+    }
+  }
+]

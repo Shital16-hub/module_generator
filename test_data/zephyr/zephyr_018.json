@@ -1,0 +1,47 @@
+[
+  {
+    "test_id": "TC-USR-002",
+    "title": "Verify Address Management",
+    "objective": "Verify users can add and manage addresses",
+    "priority": "Medium",
+    "status": "Approved",
+    "module": "User Management",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "12 minutes",
+    "linked_stories": [
+      "USR-001"
+    ],
+    "linked_requirements": [],
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Go to Addresses",
+        "expected_result": "Address list displays"
+      },
+      {
+        "step_number": 2,
+        "action": "Click 'Add Address'",
+        "expected_result": "Form opens"
+      },
+      {
+        "step_number": 3,
+        "action": "Fill in address details",
+        "expected_result": "Validation passes"
+      },
+      {
+        "step_number": 4,
+        "action": "Mark as default",
+        "expected_result": "Default checkbox checked"
+      },
+      {
+        "step_number": 5,
+        "action": "Save address",
+        "expected_result": "Address added"
+      }
+    ]
+  }
+]

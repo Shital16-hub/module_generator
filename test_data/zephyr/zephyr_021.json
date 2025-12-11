@@ -1,0 +1,45 @@
+[
+  {
+    "test_id": "TC-CART-001",
+    "title": "Verify Add to Cart Functionality",
+    "objective": "Verify products can be added to cart",
+    "priority": "Critical",
+    "status": "Approved",
+    "module": "Shopping Cart",
+    "test_type": "Functional",
+    "automation_status": "Automated",
+    "estimated_time": "8 minutes",
+    "linked_stories": [
+      "CART-001"
+    ],
+    "linked_requirements": [
+      "REQ-CART-001"
+    ],
+    "preconditions": [
+      "Product page loaded",
+      "Product in stock"
+    ],
+    "test_steps": [
+      {
+        "step_number": 1,
+        "action": "Click 'Add to Cart'",
+        "expected_result": "Cart icon updates"
+      },
+      {
+        "step_number": 2,
+        "action": "View cart",
+        "expected_result": "Product displayed"
+      },
+      {
+        "step_number": 3,
+        "action": "Verify quantity",
+        "expected_result": "Quantity = 1"
+      },
+      {
+        "step_number": 4,
+        "action": "Update quantity to 3",
+        "expected_result": "Subtotal updates"
+      }
+    ]
+  }
+]
